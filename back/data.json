@@ -1,0 +1,270 @@
+{
+    "grados": [
+        {
+            "id": "a64b23d69d",
+            "name": "sexto-a"
+        },
+        {
+            "id": "eca84c37dc",
+            "name": "sexto-b"
+        },
+        {
+            "id": "d9f8e83e4d",
+            "name": "sexto-c"
+        },
+        {
+            "id": "ca0083da4f",
+            "name": "sexto-d"
+        },
+        {
+            "id": "b735ad68d6",
+            "name": "sexto-e"
+        },
+        {
+            "id": "83438037ce",
+            "name": "sexto-f"
+        },
+        {
+            "id": "851108bc48",
+            "name": "sexto-g"
+        },
+        {
+            "id": "dc668a6150",
+            "name": "sexto-h"
+        },
+        {
+            "id": "cbfc5a3c8e",
+            "name": "septimo-a"
+        },
+        {
+            "id": "a75eb64b7a",
+            "name": "septimo-b"
+        },
+        {
+            "id": "250b77cb95",
+            "name": "septimo-c"
+        },
+        {
+            "id": "d302ca86d7",
+            "name": "septimo-d"
+        },
+        {
+            "id": "a1f1ff5cef",
+            "name": "septimo-e"
+        },
+        {
+            "id": "fc9dce7978",
+            "name": "septimo-f"
+        },
+        {
+            "id": "52fcdcea00",
+            "name": "septimo-g"
+        },
+        {
+            "id": "8dbb29b78a",
+            "name": "septimo-h"
+        },
+        {
+            "id": "8c8cffa9ef",
+            "name": "octavo-a"
+        },
+        {
+            "id": "ca114539a9",
+            "name": "octavo-b"
+        },
+        {
+            "id": "89d7fb14e7",
+            "name": "octavo-c"
+        },
+        {
+            "id": "528de06368",
+            "name": "octavo-d"
+        },
+        {
+            "id": "c32b4117e3",
+            "name": "octavo-e"
+        },
+        {
+            "id": "8e208962fb",
+            "name": "octavo-f"
+        },
+        {
+            "id": "a79917a07f",
+            "name": "octavo-g"
+        },
+        {
+            "id": "5b18eff3e3",
+            "name": "octavo-h"
+        },
+        {
+            "id": "012b116723",
+            "name": "octavo-i"
+        },
+        {
+            "id": "5d865001ba",
+            "name": "noveno-a"
+        },
+        {
+            "id": "f9a6860e48",
+            "name": "noveno-b"
+        },
+        {
+            "id": "a5651939b5",
+            "name": "noveno-c"
+        },
+        {
+            "id": "5c66c50b28",
+            "name": "noveno-d"
+        },
+        {
+            "id": "a287e6ff81",
+            "name": "noveno-e"
+        },
+        {
+            "id": "58a9941021",
+            "name": "noveno-f"
+        },
+        {
+            "id": "9c684e924a",
+            "name": "noveno-g"
+        },
+        {
+            "id": "5dbdbabb96",
+            "name": "noveno-h"
+        },
+        {
+            "id": "5346a37d34",
+            "name": "decimo-a"
+        },
+        {
+            "id": "8ab4769f7e",
+            "name": "decimo-b"
+        },
+        {
+            "id": "ad31570c60",
+            "name": "decimo-c"
+        },
+        {
+            "id": "772a994f4c",
+            "name": "decimo-d"
+        },
+        {
+            "id": "4477fd2cef",
+            "name": "decimo-e"
+        },
+        {
+            "id": "9736e0f30f",
+            "name": "decimo-f"
+        },
+        {
+            "id": "8d6b3d97b5",
+            "name": "decimo-g"
+        },
+        {
+            "id": "eec1b2349c",
+            "name": "undecimo-a"
+        },
+        {
+            "id": "4d5a109e24",
+            "name": "undecimo-b"
+        },
+        {
+            "id": "c4e41afea4",
+            "name": "undecimo-c"
+        },
+        {
+            "id": "cfd1192eaa",
+            "name": "undecimo-d"
+        },
+        {
+            "id": "32bb9ac79a",
+            "name": "undecimo-e"
+        },
+        {
+            "id": "6ab42dfa87",
+            "name": "undecimo-f"
+        },
+        {
+            "id": "f30fea3be2",
+            "name": "undecimo-g"
+        }
+    ],
+    "materias": [
+        {
+            "id": "8ff5cbeda5",
+            "name": "ingles"
+        },
+        {
+            "id": "e47913116d",
+            "name": "español"
+        },
+        {
+            "id": "c1bbca7c7a",
+            "name": "etica-religion"
+        },
+        {
+            "id": "22003c7575",
+            "name": "biologia"
+        },
+        {
+            "id": "76ea38eea3",
+            "name": "educacion fisica"
+        },
+        {
+            "id": "2b7b4ba37a",
+            "name": "matematicas"
+        },
+        {
+            "id": "a2c57a0de2",
+            "name": "fundamento"
+        },
+        {
+            "id": "5fcb9377aa",
+            "name": "informatica"
+        },
+        {
+            "id": "0c0acbd375",
+            "name": "sociales"
+        },
+        {
+            "id": "9311ed1c2b",
+            "name": "quimica"
+        },
+        {
+            "id": "8da57218a5",
+            "name": "pre-saber"
+        },
+        {
+            "id": "19244706ff",
+            "name": "artistica"
+        },
+        {
+            "id": "25cc2307a2",
+            "name": "bioquimica"
+        },
+        {
+            "id": "c7b33142cd",
+            "name": "fisica"
+        },
+        {
+            "id": "7a3010fd75",
+            "name": "trigonometria"
+        },
+        {
+            "id": "84f4c1482f",
+            "name": "ciencias politicas"
+        },
+        {
+            "id": "da01ab9faa",
+            "name": "filosofia"
+        },
+        {
+            "id": "56f31a4e00",
+            "name": "calculo"
+        },
+        {
+            "id": "c2a8a433c4",
+            "name": "presaber 11"
+        }
+    ]
+}
