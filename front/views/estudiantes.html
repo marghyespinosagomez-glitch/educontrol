@@ -1,0 +1,158 @@
+
+                <div class="d-flex ">
+                    <p class="mb-0">Cuentas / Estudiantes</p>
+                    <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#nuevoEst">+ Agregar</button>
+                </div>
+                <!-- <div class="card mt-3 mb-3"> -->
+                    <!-- <div class="card-body"> -->
+                        <div class="row g-3">
+                            
+                            <div class="col-md-2">
+                                <label class="form-label">Jornada</label>
+                                <select class="form-select" id="filtroGrado">
+                                    <option value="">Todos</option>
+                                    <option value="1">Mañana</option>
+                                    <option value="2">Tarde</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label">Grado</label>
+                                <select class="form-select" id="filtroGrado">
+                                    <option value="">Todos</option>
+                                    <option value="1">Primero</option>
+                                    <option value="2">Segundo</option>
+                                    <option value="3">Tercero</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Asignatura</label>
+                                <select class="form-select" id="filtroAsignatura">
+                                    <option value="">Todas</option>
+                                    <option value="matematicas">Matemáticas</option>
+                                    <option value="lengua">Lengua</option>
+                                    <option value="ciencias">Ciencias</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Bloque</label>
+                                <select class="form-select" id="filtroBloque">
+                                    <option value="">Todos</option>
+                                    <option value="1">Bloque 1</option>
+                                    <option value="2">Bloque 2</option>
+                                    <option value="3">Bloque 3</option>
+                                    <option value="4">Bloque 4</option>
+                                    <option value="5">Bloque 5</option>
+                                    <option value="6">Bloque 6</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+                <table class="tabla" style="margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th style="width: 8%;">Documento</th>
+                            <th style="width: 5%;">Tipo</th>
+                            <th style="width: 22%;">Nombres</th>
+                            <th style="width: 5%;">Grado</th>
+                            <th style="width: 22%;">Acudiente</th>
+                            <th style="width: 15%;">Correo</th>
+                            <th style="width: 9%;">Telefono</th>
+                            <th style="width: 10%;">Dirección</th>
+                            <th style="width: 5%;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-productos"></tbody>
+                </table>
+                <div class="modal fade" id="nuevoEst" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel">Agregar Estudiante</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="formAggEst">
+                                    <input type="hidden" id="aggEst" name="aggEst">
+                                    <div class="">
+                                        <label for="tipodoc" class="form-label">Tipo documento</label>
+                                        <select class="form-control mb-2" name="tipodoc" id="tipodoc" required>
+                                            <option value="" disabled selected>Seleccionar</option>
+                                            <option value="RC">Registro Civil</option>
+                                            <option value="TI">Tarjeta de Identidad</option>
+                                            <option value="CC">Cedula de Ciudadania</option>
+                                            <option value="CE">Cedula de Extranjería</option>
+                                            <option value="DE">Documento Especial</option>
+                                        </select>
+                                    </div>
+                                    <div class="">
+                                        <label for="doc" class="form-label">Documento</label>
+                                        <input type="number" class="form-control" id="doc" name="doc" required>
+                                    </div>
+                                    <div class="">
+                                        <label for="namest" class="form-label">Nombres</label>
+                                        <input type="text" class="form-control" id="namest" name="namest" required>
+                                    </div>
+                                    
+                                    <div class="">
+                                        <label for="grado" class="form-label">Asignar Grado</label>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <select class="form-control mb-2"  name="grado" id="grado" required>
+                                                    <option value="" disabled selected>Seleccionar Grado</option>
+                                                    <option value="1">Transición</option>
+                                                    <option value="2">Primero</option>
+                                                    <option value="3">Segundo</option>
+                                                    <option value="4">Tercer</option>
+                                                    <option value="5">Cuarto</option>
+                                                    <option value="6">Quinto</option>
+                                                    <option value="7">Sexto</option>
+                                                    <option value="8">Septimo</option>
+                                                    <option value="9">Octavo</option>
+                                                    <option value="10">Noveno</option>
+                                                    <option value="11">Décimo</option>
+                                                    <option value="12">Once</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
+                                                <select class="form-control" name="letra" id="letra" required>
+                                                    <option value="" disabled selected>Seleccionar Letra</option>
+                                                    <option value="A" >A</option>
+                                                    <option value="B" >B</option>
+                                                    <option value="C" >C</option>
+                                                    <option value="D" >D</option>
+                                                    <option value="E" >E</option>
+                                                    <option value="F" >F</option>
+                                                    <option value="G" >G</option>
+                                                    <option value="H" >H</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <label for="nameacu" class="form-label">Nombre Acudiente</label>
+                                        <input type="text" class="form-control" id="nameacu" name="nameacu" required>
+                                    </div>
+                                    <div class="">
+                                        <label for="emailacu" class="form-label">Correo Acudiente</label>
+                                        <input type="email" class="form-control" id="emailacu" name="emailacu" >
+                                    </div>
+                                    <div class="">
+                                        <label for="telacu" class="form-label">Telefono Acudiente</label>
+                                        <input type="number" class="form-control" id="telacu" name="telacu" required>
+                                    </div>
+                                    <div class="">
+                                        <label for="dir" class="form-label">Dirección</label>
+                                        <input type="text" class="form-control" id="dir" name="dir" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success mt-3" >Agregar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<script src="../js/estudiantes.js"></script>
