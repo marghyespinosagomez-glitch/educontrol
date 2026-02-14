@@ -10,6 +10,9 @@ sleep 3
 su - postgres -c "psql -c \"CREATE USER \\\"EduControl\\\" WITH PASSWORD 'Casanare1511*';\"" || true
 su - postgres -c "psql -c \"CREATE DATABASE control OWNER \\\"EduControl\\\";\"" || true
 
+echo "🚀 Entrando a la carpeta del proyecto..."
+cd /app/educontrol/back
+
 # 3. Arrancar Node
 echo "🚀 Todo listo en puerto 3070. Arrancando EduControl..."
 npm start
