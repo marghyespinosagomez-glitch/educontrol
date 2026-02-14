@@ -1,1 +1,36 @@
 en esta carpeta se llevara a cabo toda la logica y programacion del back
+
+## tablas usadas ##
+
+CREATE TABLE docentes (
+    id SERIAL PRIMARY KEY,
+    uuid VARCHAR(100) NOT NULL,	
+    tipo_documento VARCHAR(100),
+    documento VARCHAR(100) UNIQUE,
+    nombre VARCHAR(100) UNIQUE,
+    email VARCHAR(100) UNIQUE,
+    telefono VARCHAR(100) UNIQUE,
+    direccion VARCHAR(100),
+    datos JSONB
+);
+
+CREATE TABLE docentes (
+    id SERIAL PRIMARY KEY,
+    uuid VARCHAR(100) NOT NULL,	
+    tipo_documento VARCHAR(100),
+    documento VARCHAR(100) UNIQUE,
+    nombre VARCHAR(100) UNIQUE,
+    email VARCHAR(100) UNIQUE,
+    telefono VARCHAR(100) UNIQUE,
+    direccion VARCHAR(100),
+    datos TEXT[]
+);
+
+CREATE TABLE materias (
+    id SERIAL PRIMARY KEY,
+    uuid VARCHAR(100) NOT NULL,	
+    nombre_materia VARCHAR(100) UNIQUE,
+    docente VARCHAR(100),
+    grado VARCHAR(100)
+);
+
