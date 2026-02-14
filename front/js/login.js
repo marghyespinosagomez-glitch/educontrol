@@ -5,7 +5,6 @@ function log(){
         {user: "user", pass: "userdoc", rol: "userdoc"},
         {user: "user", pass: "userest", rol: "userest"}
     ];
-//gola
 
     const user=document.getElementById('user').value;
     const pass=document.getElementById('password').value;

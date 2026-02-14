@@ -12,32 +12,32 @@
 
 </head>
 <body>
-        <div class="sidebar">
-            <div style="width: 100px;">
-                <img src="/images/iconlog.png" style="margin-left: 25px; width: 100%; height: auto; "/>    
-            </div>
-
-            <a href="#" onclick="cargarVista('./minfo.html')">Mi Información</a>
-
-            <a href="#" onclick="cargarVista('./subirnotas.html')">Subir Notas</a>
-
-            <a href="#" onclick="cargarVista('./asistenciadoc.html')">Asistencias</a>
-
-            <a href="#" onclick="cargarVista('./obserdoc.html')">Observaciones</a>
-
+    <div class="sidebar">
+        <div style="width: 100px;">
+            <img src="/images/iconlog.png" style="margin-left: 25px; width: 100%; height: auto; "/>    
         </div>
 
-        <div class="main">
-            <div class="top-box">
-                <div style="text-align: center;">Bienvenido Docente 
-                    <button class="btn btn-primary ms-auto" style="float: right;" onclick=logout()>Salir</button>
-                </div>
-            </div>
-            <div class="bottom-box" id="contenido">
-                
+        <a href="#" onclick="cargarVista('./minfo.html')">Mi Información</a>
+
+        <a href="#" onclick="cargarVista('./subirnotas.html')">Subir Notas</a>
+
+        <a href="#" onclick="cargarVista('./asistenciadoc.html')">Asistencias</a>
+
+        <a href="#" onclick="cargarVista('./obserdoc.html')">Observaciones</a>
+
+    </div>
+
+    <div class="main">
+        <div class="top-box">
+            <div style="text-align: center;">Bienvenido Docente 
+                <button class="btn btn-primary ms-auto" style="float: right;" onclick=logout()>Salir</button>
             </div>
         </div>
-        <script src="../js/loguout.js"></script>
-        <script src="../js/userdoc.js"></script>
+        <div class="bottom-box" id="contenido">
+            
+        </div>
+    </div>
+    <script src="../js/loguout.js"></script>
+    <script src="../js/userdoc.js"></script>
 </body>
 </html>
