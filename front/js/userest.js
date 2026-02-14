@@ -22,3 +22,8 @@ function cambiarTitulo(ruta) {
         document.title = tituloBase;
     }
 }
+
+document.getElementById("navhor").addEventListener("submit", function(e){
+    e.preventDefault();
+    aggDoc();
+});

@@ -1,1 +1,71 @@
-mi información Docente
+<div class="d-flex ">
+    <p class="mb-0">Mi Información</p>
+</div>
+<div class="row g-3">
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Filtros</h5>
+        <hr class="flex-grow-1">
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Jornada</label>
+        <select class="form-select" id="filtroGrado">
+            <option value="">Todos</option>
+            <option value="1">Mañana</option>
+            <option value="2">Tarde</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Grado</label>
+        <select class="form-select" id="filtroBloque">
+            <option value="" >Todos</option>
+            <option value="1">Transición</option>
+            <option value="2">Primero</option>
+            <option value="3">Segundo</option>
+            <option value="4">Tercer</option>
+            <option value="5">Cuarto</option>
+            <option value="6">Quinto</option>
+            <option value="7">Sexto</option>
+            <option value="8">Septimo</option>
+            <option value="9">Octavo</option>
+            <option value="10">Noveno</option>
+            <option value="11">Décimo</option>
+            <option value="12">Once</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Fecha</label>
+        <select id="tipoFecha" class="form-select">
+            <option value="dia">Día</option>
+            <option value="semana">Semana</option>
+            <option value="mes">Mes</option>
+        </select>
+    </div>
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Datos</h5>
+        <hr class="flex-grow-1">
+    </div>
+    <div class="table-responsive mt-3">
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Item</th>
+                <th>Jornada</th>
+                <th>Materias</th>
+                <th>Grado</th>
+                <th>Bloque</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mañana</td>
+                <td>Matemáticas</td>
+                <td>5°</td>
+                <td>A</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

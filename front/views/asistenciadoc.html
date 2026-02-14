@@ -1,6 +1,5 @@
 <div class="d-flex ">
-    <p class="mb-0">Docente / Asistencia</p>
-    <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#nuevoDoc">+ Agregar</button>
+    <p class="mb-0">Asistencia</p>
 </div>
 <div class="row g-3">
     <div class="col-md-4">
@@ -40,5 +39,43 @@
             <option value="ciencias">Ciencias</option>
         </select>
     </div>
-
+    <div class="tabla-container">
+        <table class="table table-bordered" id="tablaInas">
+            <thead class="table-light">
+                <tr id="filaHead">
+                    <th>Item</th>
+                    <th>Estudiantes</th>
+                    <th>N1</th>
+                    <th>N2</th>
+                    <th>N3</th>
+                    <th>N4</th>
+                    <th>N5</th>
+                    <th id="colInasFinal">TOTAL INAS</th>
+                </tr>
+            </thead>
+            <tbody id="bodyAsis">
+                <tr>
+                    <td>1</td>
+                    <td>Kevin Acero Barrera</td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="inasFinal">0</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Juan David Acero Urbano</td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
+                    <td class="inasFinal">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+<script src="/front/js/asistenciadoc.js"></script>

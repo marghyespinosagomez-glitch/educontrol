@@ -9,15 +9,15 @@
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
     <link rel="shortcut icon" href="/images/iconT.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/login.css">
-    <link href="./css/responsive.css" rel="stylesheet" />
+    <link href="/front/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/front/css/login.css">
+    <link href="/front/css/responsive.css" rel="stylesheet" />
 
 </head>
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="#" onclick="cargarVista('views/index.html')">
+            <a class="navbar-brand" href="#" onclick="cargarVista('./views/index.html')">
                 <img src="images/logoT.png" alt="" style="width: 50px; min-height: auto;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -29,22 +29,22 @@
                 <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav  ">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" onclick="cargarVista('views/index.html')">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" onclick="cargarVista('./views/index.html')">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="cargarVista('views/nosotros.html')">Nosotros </a>
+                        <a class="nav-link" href="#" onclick="cargarVista('./views/nosotros.html')">Nosotros </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="cargarVista('views/galeria.html')">Galeria </a>
+                        <a class="nav-link" href="#" onclick="cargarVista('./views/galeria.html')">Galeria </a>
                     </li>
                     <li class="nav-item">
-                        a class="nav-link" href="#" onclick="cargarVista('views/noticias.html')">Noticias </a>
+                        <a class="nav-link" href="#" onclick="cargarVista('./views/noticias.html')">Noticias </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="cargarVista('views/contacto.html')">Contáctenos</a>
+                        <a class="nav-link" href="#" onclick="cargarVista('./views/contacto.html')">Contáctenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="cargarVista('views/ingresar.html')">Ingresar </a>
+                        <a class="nav-link" href="#" onclick="cargarVista('./views/ingresar.html')">Ingresar </a>
                     </li>
             </div>
         </nav>
@@ -96,7 +96,6 @@
             </div>
         </div>
     </section>
-
   <!-- end info_section -->
 
   <!-- footer section -->
@@ -109,6 +108,6 @@
 
     <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
