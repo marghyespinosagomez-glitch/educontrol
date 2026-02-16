@@ -18,6 +18,8 @@ function cambiarTitulo(ruta) {
         document.title = tituloBase + " | Docentes";
     } else if (ruta.includes("./estudiantes.html")) {
         document.title = tituloBase + " | Estudiantes";
+    } else if (ruta.includes("./grados.html")) {
+        document.title = tituloBase + " | Grados";
     } else if (ruta.includes("./notasglob.html")) {
         document.title = tituloBase + " | Notas";
     } else if (ruta.includes("./asistencia.html")) {

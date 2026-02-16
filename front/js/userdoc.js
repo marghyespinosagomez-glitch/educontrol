@@ -1,12 +1,25 @@
+let vistaActual = "";
+
+
 function cargarVista(vista) {
-    $("#contenido").load(vista);
-    cambiarTitulo(vista)
+    if (vistaActual === vista) return;
+
+    vistaActual = vista;
+
+    $("#contenido").load(vista, function () {
+
+        cambiarTitulo(vista);
+
+        if (vista.includes("asistenciadoc.html")) {
+            mostrarFechaActual();
+        }
+
+    });
 
 }
 
 $(document).ready(function(){
-    $("#contenido").load("./minfo.html");
-    cambiarTitulo("./minfo.html");
+    cargarVista("./minfo.html");
 });
 
 function cambiarTitulo(ruta) {
@@ -24,19 +37,3 @@ function cambiarTitulo(ruta) {
         document.title = tituloBase;
     }
 }
-
-document.getElementById("tipoFecha").addEventListener("change", function () {
-    const input = document.getElementById("inputFecha");
-
-    if (this.value === "dia") {
-        input.type = "date";
-    } 
-    else if (this.value === "semana") {
-        input.type = "week";
-    } 
-    else if (this.value === "mes") {
-        input.type = "month";
-    }
-});
-
-

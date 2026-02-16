@@ -31,48 +31,38 @@
     </div>
 
     <div class="col-md-4">
-        <label class="form-label">Asignatura</label>
-        <select class="form-select" id="filtroAsignatura">
-            <option value="">Todas</option>
-            <option value="matematicas">Matemáticas</option>
-            <option value="lengua">Lengua</option>
-            <option value="ciencias">Ciencias</option>
-        </select>
+        <label class="form-label">Fecha</label>
+        <input type="text" id="fechaActual" class="form-control" readonly>
     </div>
+    
     <div class="tabla-container">
         <table class="table table-bordered" id="tablaInas">
             <thead class="table-light">
-                <tr id="filaHead">
+                <tr id="filaHeadInas">
                     <th>Item</th>
                     <th>Estudiantes</th>
-                    <th>N1</th>
-                    <th>N2</th>
-                    <th>N3</th>
-                    <th>N4</th>
-                    <th>N5</th>
-                    <th id="colInasFinal">TOTAL INAS</th>
+                    <th>Presente</th>
+                    <th>Evadido</th>
+                    <th>Ausente</th>
+                    <th>Ausente Excusa</th>
                 </tr>
             </thead>
             <tbody id="bodyAsis">
                 <tr>
                     <td>1</td>
                     <td>Kevin Acero Barrera</td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="inasFinal">0</td>
+                    <td><input type="radio" name="asis_2" value="presente" onchange="actualizarTotal(this)"></td>
+                    <td><input type="radio" name="asis_2" value="evadido" onchange="actualizarTotal(this)"></td>
+                    <td><input type="radio" name="asis_2" value="ausente" onchange="actualizarTotal(this)"></td>
+                    <td><input type="radio" name="asis_2" value="excusa" onchange="actualizarTotal(this)"></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Juan David Acero Urbano</td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="celdaAsis"><span class="estado" onclick="activarOpciones(this)">✏️</span></td>
-                    <td class="inasFinal">0</td>
+                    <td><input type="radio" name="asis_1" value="presente" onchange="actualizarTotal(this)"></td>
+                    <td><input type="radio" name="asis_1" value="evadido" onchange="actualizarTotal(this)"></td>
+                    <td><input type="radio" name="asis_1" value="ausente" onchange="actualizarTotal(this)"></td>
+                    <td><input type="radio" name="asis_1" value="excusa" onchange="actualizarTotal(this)"></td>
                 </tr>
             </tbody>
         </table>

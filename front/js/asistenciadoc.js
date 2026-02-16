@@ -1,36 +1,31 @@
-function activarOpciones(elemento) {
+function actualizarTotal(input) {
 
-    elemento.innerHTML = `
-        <span onclick="marcarAsistencia(this, true)">✔</span>
-        <span onclick="marcarAsistencia(this, false)">❌</span>
-    `;
-}
+    const fila = input.closest("tr");
+    const radios = fila.querySelectorAll("input[type='radio']");
 
-function marcarAsistencia(elemento, presente) {
+    let estadoSeleccionado = null;
 
-    const celda = elemento.closest("td");
-
-    if (presente) {
-        celda.innerHTML = '<span class="estado">✔</span>';
-        celda.dataset.estado = "presente";
-    } else {
-        celda.innerHTML = '<span class="estado">❌</span>';
-        celda.dataset.estado = "inasistencia";
-    }
-
-    actualizarTotal(celda.closest("tr"));
-}
-
-function actualizarTotal(fila) {
-
-    const celdas = fila.querySelectorAll(".celdaAsis");
-    let total = 0;
-
-    celdas.forEach(celda => {
-        if (celda.dataset.estado === "inasistencia") {
-            total++;
+    radios.forEach(radio => {
+        if (radio.checked) {
+            estadoSeleccionado = radio.value;
         }
     });
 
-    fila.querySelector(".inasFinal").textContent = total;
+    fila.dataset.estado = estadoSeleccionado;
+}
+
+
+function mostrarFechaActual() {
+
+    const input = document.getElementById("fechaActual");
+    if (!input) return;
+
+    const hoy = new Date();
+
+    input.value = hoy.toLocaleDateString("es-ES", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
 }
