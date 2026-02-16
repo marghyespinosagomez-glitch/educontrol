@@ -62,14 +62,15 @@ document.getElementById("btnAgregar").addEventListener("click", function () {
     const selectMateria = document.getElementById("matter");
     const materiaNombre = selectMateria.options[selectMateria.selectedIndex].text;
 
+    // const dias = document.getElementById("day");
     const dias = Array.from(document.querySelectorAll("input[name='day']:checked"))
-        .map(el => el.value);
+        .map(el => el.value)
 
     const bloques = Array.from(document.querySelectorAll("input[name='block']:checked"))
         .map(el => el.value);
 
     if (dias.length === 0 || bloques.length === 0) {
-        alert("Selecciona al menos un día y un bloque");
+        alert("Selecciona al menos un bloque");
         return;
     }
 

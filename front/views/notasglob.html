@@ -1,1 +1,73 @@
-Aqui van las notas de todo el colegio
+<div class="d-flex ">
+    <p class="mb-0">Notas</p>
+</div>
+<div class="row g-3">
+    
+    <div class="col-md-2">
+        <label class="form-label">Jornada</label>
+        <select class="form-select" id="filtroJornada">
+            <option value="">Todos</option>
+            <option value="1">Mañana</option>
+            <option value="2">Tarde</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <label class="form-label">Grado</label>
+        <select class="form-select" id="filtroGrado">
+            <option value="">Todos</option>
+            <option value="1">Transición</option>
+            <option value="2">Primero</option>
+            <option value="3">Segundo</option>
+            <option value="4">Tercero</option>
+            <option value="5">Cuarto</option>
+            <option value="6">Quinto</option>
+            <option value="7">Sexto</option>
+            <option value="8">Septimo</option>
+            <option value="9">Octavo</option>
+            <option value="10">Noveno</option>
+            <option value="11">Décimo</option>
+            <option value="12">Once</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Asignatura</label>
+        <select class="form-select" id="filtroAsignatura">
+            <option value="">Todas</option>
+            <option value="matematicas">Matemáticas</option>
+            <option value="lengua">Lengua</option>
+            <option value="ciencias">Ciencias</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Bloque</label>
+        <select class="form-select" id="filtroBloque">
+            <option value="">Todos</option>
+            <option value="1">Bloque 1</option>
+            <option value="2">Bloque 2</option>
+            <option value="3">Bloque 3</option>
+            <option value="4">Bloque 4</option>
+            <option value="5">Bloque 5</option>
+            <option value="6">Bloque 6</option>
+        </select>
+    </div>
+
+</div>
+<table class="tabla" style="margin-top: 10px;">
+    <thead>
+        <tr >
+            <th style="width: 5%;">Item</th>
+            <th style="width: 10%;">Grado</th>
+            <th style="width: 38%;">Director</th>
+            <th style="width: 20%;">Materias</th>
+            <th style="width: 10%;">Dias</th>
+            <th style="width: 10%;">Bloques</th>
+            <th style="width: 7%;">Acción</th>
+        </tr>
+    </thead>
+    <tbody id="tabla-productos">
+        
+    </tbody>
+</table>

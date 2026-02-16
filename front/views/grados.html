@@ -2,6 +2,76 @@
     <p class="mb-0">Grados</p>
     <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#nuevoGrado">+ Crear</button>
 </div>
+<div class="row g-3">
+    
+    <div class="col-md-2">
+        <label class="form-label">Jornada</label>
+        <select class="form-select" id="filtroJornada">
+            <option value="">Todos</option>
+            <option value="1">Mañana</option>
+            <option value="2">Tarde</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <label class="form-label">Grado</label>
+        <select class="form-select" id="filtroGrado">
+            <option value="">Todos</option>
+            <option value="1">Transición</option>
+            <option value="2">Primero</option>
+            <option value="3">Segundo</option>
+            <option value="4">Tercero</option>
+            <option value="5">Cuarto</option>
+            <option value="6">Quinto</option>
+            <option value="7">Sexto</option>
+            <option value="8">Septimo</option>
+            <option value="9">Octavo</option>
+            <option value="10">Noveno</option>
+            <option value="11">Décimo</option>
+            <option value="12">Once</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Asignatura</label>
+        <select class="form-select" id="filtroAsignatura">
+            <option value="">Todas</option>
+            <option value="matematicas">Matemáticas</option>
+            <option value="lengua">Lengua</option>
+            <option value="ciencias">Ciencias</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Bloque</label>
+        <select class="form-select" id="filtroBloque">
+            <option value="">Todos</option>
+            <option value="1">Bloque 1</option>
+            <option value="2">Bloque 2</option>
+            <option value="3">Bloque 3</option>
+            <option value="4">Bloque 4</option>
+            <option value="5">Bloque 5</option>
+            <option value="6">Bloque 6</option>
+        </select>
+    </div>
+
+</div>
+<table class="tabla" style="margin-top: 10px;">
+    <thead>
+        <tr >
+            <th style="width: 5%;">Item</th>
+            <th style="width: 10%;">Grado</th>
+            <th style="width: 38%;">Director</th>
+            <th style="width: 20%;">Materias</th>
+            <th style="width: 10%;">Dias</th>
+            <th style="width: 10%;">Bloques</th>
+            <th style="width: 7%;">Acción</th>
+        </tr>
+    </thead>
+    <tbody id="tabla-productos">
+        
+    </tbody>
+</table>
 
 <div class="modal fade" id="nuevoGrado" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -76,6 +146,17 @@
                                 <option value="F" >Filosofía</option>
                             </select>
                         </div>
+                        <!-- <div class="">
+                            <label for="day" class="form-label">Asignar Día</label>
+                                <select class="form-control" name="day" id="day" required>
+                                    <option value="" disabled selected>Seleccionar Día</option>
+                                    <option value="A" >Lunes</option>
+                                    <option value="B" >Martes</option>
+                                    <option value="C" >Miercoles</option>
+                                    <option value="D" >Jueves</option>
+                                    <option value="E" >Viernes</option>
+                                </select>
+                        </div> -->
                         <div class="">
                             <label for="day" class="form-label">Asignar Día</label>
                             <div class="row" id="dias">

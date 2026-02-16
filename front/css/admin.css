@@ -64,14 +64,23 @@ body {
     flex-direction: column;
     gap: 20px;
 }
-.tabla th{
-    font-size: 13px;
-    margin-top: 10px;
-    padding: 2px;
+
+.tabla {
+    width: 100%;
+    table-layout: fixed; 
+    border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
     text-align: center;
     border: 1px solid; 
+    vertical-align: middle;
+    padding: 2px;
+    word-wrap: break-word;
     border-color: rgb(201, 201, 201);
 }
+
 .bottom-box {
     padding: 1em;
     flex: 1;
