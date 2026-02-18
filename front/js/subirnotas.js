@@ -40,6 +40,7 @@ function agregarBotonesColumnas() {
             e.stopPropagation();
             agregarNota();
             agregarBotonesColumnas();
+            generarTablaNotas();
             
         };
 
@@ -49,22 +50,67 @@ function agregarBotonesColumnas() {
 
 agregarBotonesColumnas();
 
-
 function calcularPromedio(input) {
+
     const fila = input.closest("tr");
     const notas = fila.querySelectorAll(".nota");
+    const celdaFinal = fila.querySelector(".notaFinal");
 
     let suma = 0;
-    let contador = 0;
+    let cantidad = 0;
 
     notas.forEach(nota => {
         if (nota.value !== "") {
             suma += parseFloat(nota.value);
-            contador++;
+            cantidad++;
         }
     });
 
-    const promedio = contador > 0 ? (suma / contador).toFixed(2) : 0;
+    const promedio = cantidad > 0 ? (suma / cantidad).toFixed(2) : 0;
+    celdaFinal.textContent = promedio;
+}
 
-    fila.querySelector(".notaFinal").textContent = promedio;
+const estudiantes = [
+    "Kevin Jefferson Fabian Acero Barrera",
+    "Juan David Acero Urbano",
+    "Maria Fernanda Torres Mujica"
+]
+
+function generarTablaNotas() {
+
+    const tbody = document.getElementById("tabla-upnota-doc");
+    const columnasNotas = document.querySelectorAll("#filaHead th").length - 3; 
+    // -3 porque no contamos Item, Estudiantes y Nota Final
+
+    tbody.innerHTML = "";
+
+    estudiantes.forEach((nombre, index) => {
+
+        let fila = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${nombre}</td>
+        `;
+
+        // Generar inputs para cada N (N1, N2, N3...)
+        for (let i = 0; i < columnasNotas; i++) {
+            fila += `
+                <td>
+                    <input type="number"
+                           class="form-control nota"
+                           min="0"
+                           max="5"
+                           step="0.1"
+                           oninput="calcularPromedio(this)">
+                </td>
+            `;
+        }
+
+        fila += `
+                <td class="notaFinal">0</td>
+            </tr>
+        `;
+
+        tbody.innerHTML += fila;
+    });
 }

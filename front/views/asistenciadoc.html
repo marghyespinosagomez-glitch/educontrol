@@ -2,6 +2,10 @@
     <p class="mb-0">Asistencia</p>
 </div>
 <div class="row g-3">
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Filtros</h5>
+        <hr class="flex-grow-1">
+    </div>
     <div class="col-md-4">
         <label class="form-label">Jornada</label>
         <select class="form-select" id="filtroGrado">
@@ -34,38 +38,41 @@
         <label class="form-label">Fecha</label>
         <input type="text" id="fechaActual" class="form-control" readonly>
     </div>
+
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Datos</h5>
+        <hr class="flex-grow-1">
+    </div>
     
     <div class="tabla-container">
-        <table class="table table-bordered" id="tablaInas">
+        <table class="tabla table-bordered" id="tablaInas">
             <thead class="table-light">
                 <tr id="filaHeadInas">
-                    <th>Item</th>
-                    <th>Estudiantes</th>
-                    <th>Presente</th>
-                    <th>Evadido</th>
-                    <th>Ausente</th>
-                    <th>Ausente Excusa</th>
+                    <th style="width: 5%;">Item</th>
+                    <th style="width: 35%;">Estudiantes</th>
+                    <th style="width: 10%;">Presente</th>
+                    <th style="width: 10%;">Evadido</th>
+                    <th style="width: 10%;">Ausente</th>
+                    <th style="width: 15%;">Ausente Excusa</th>
+                    <th style="width: 15%;">Cargar Excusa</th>
                 </tr>
             </thead>
-            <tbody id="bodyAsis">
+            <tbody id="table-asis-doc">
                 <tr>
                     <td>1</td>
-                    <td>Kevin Acero Barrera</td>
-                    <td><input type="radio" name="asis_2" value="presente" onchange="actualizarTotal(this)"></td>
-                    <td><input type="radio" name="asis_2" value="evadido" onchange="actualizarTotal(this)"></td>
-                    <td><input type="radio" name="asis_2" value="ausente" onchange="actualizarTotal(this)"></td>
-                    <td><input type="radio" name="asis_2" value="excusa" onchange="actualizarTotal(this)"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Juan David Acero Urbano</td>
+                    <td>Kevin jefferson Fabian Acero Barrera</td>
                     <td><input type="radio" name="asis_1" value="presente" onchange="actualizarTotal(this)"></td>
                     <td><input type="radio" name="asis_1" value="evadido" onchange="actualizarTotal(this)"></td>
                     <td><input type="radio" name="asis_1" value="ausente" onchange="actualizarTotal(this)"></td>
                     <td><input type="radio" name="asis_1" value="excusa" onchange="actualizarTotal(this)"></td>
+                    <td>
+                        <input type="file" class="form-control form-control-sm input-excusa" disabled accept=".pdf,.jpg,.png">
+                    </td>
                 </tr>
+              
             </tbody>
         </table>
+            <button type="submit">Guardar Asistencias</button>
     </div>
 </div>
 <script src="/front/js/asistenciadoc.js"></script>

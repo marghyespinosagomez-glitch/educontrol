@@ -29,3 +29,18 @@ function mostrarFechaActual() {
         day: "numeric"
     });
 }
+
+function actualizarTotal(radio) {
+
+    const fila = radio.closest("tr");
+    const inputFile = fila.querySelector(".input-excusa");
+
+    if (radio.value === "excusa") {
+        inputFile.disabled = false;
+    } else {
+        inputFile.disabled = true;
+        inputFile.value = ""; // limpia archivo si cambian opción
+    }
+
+    // aquí puedes dejar tu lógica actual si ya tienes cálculos
+}

@@ -50,55 +50,21 @@
     </div>
 
     <div class="tabla-container">
-        <table class="table table-bordered" id="tablaNotas">
+        <table class="tabla" id="tablaNotas">
             <thead class="table-light">
                 <tr id="filaHead">
-                    <th>Item</th>
-                    <th>Estudiantes</th>
-                    <th>N1</th>
-                    <th>N2</th>
-                    <th id="colNotaFinal">Nota Final</th>
+                    <th style="width: 5%;">Item</th>
+                    <th style="width: 30%;">Estudiantes</th>
+                    <th >N1</th>
+                    <th >N2</th>
+                    <th style="width: 9%;"id="colNotaFinal">Nota Final</th>
                 </tr>
             </thead>
-            <tbody id="bodyNotas">
-                <tr>
-                    <td>1</td>
-                    <td>Kevin Acero Barrera</td>
-                    <td><input type="number" class="form-control nota" oninput="calcularPromedio(this)"></td>
-                    <td><input type="number" class="form-control nota" oninput="calcularPromedio(this)"></td>
-                    <td class="notaFinal">0</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Juan David Acero Urbano</td>
-                    <td><input type="number" class="form-control nota" oninput="calcularPromedio(this)"></td>
-                    <td><input type="number" class="form-control nota" oninput="calcularPromedio(this)"></td>
-                    <td class="notaFinal">0</td>
-                </tr>
+            <tbody id="tabla-upnota-doc">
             </tbody>
         </table>
+        <button type="submit">Guardar Notas</button>
     </div>
-    <!-- <div class="table-responsive mt-3">
-        <table class="table table-bordered table-hover">
-            <thead class="table-light">
-                <tr id="filaHead">
-                    <th>Item</th>
-                    <th>Estudiantes</th>
-                    <th>N1</th>
-                    <th>N2</th>
-                    <th id="colNotaFinal">Nota Final</th>
-                </tr>
-            </thead>
-            <tbody id="bodyNotas">
-                <tr>
-                    <td>1</td>
-                    <td>Mañana</td>
-                    <td><input type="number" class="form-control nota" oninput="calcularPromedio(this)"></td>
-                    <td><input type="number" class="form-control nota" oninput="calcularPromedio(this)"></td>
-                    <td class="notaFinal">0</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
+
 </div>
 <script src="/front/js/subirnotas.js"></script>

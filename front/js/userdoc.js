@@ -10,9 +10,21 @@ function cargarVista(vista) {
 
         cambiarTitulo(vista);
 
+
+        if (vista.includes("minfo.html")) {
+            generarTablaInfo();
+            activarFiltros();    
+        }
+
+        if (vista.includes("subirnotas.html")) {
+            generarTablaNotas();
+        }
+        
+
         if (vista.includes("asistenciadoc.html")) {
             mostrarFechaActual();
         }
+        
 
     });
 

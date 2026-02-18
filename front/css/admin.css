@@ -1,21 +1,27 @@
 *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-      display: flex;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* Style the side navigation */
-.sidebar{
+.sidebar {
     width: 200px;
-    height: 100dvh;
-    background-color:  rgb(248, 246, 246);
+    height: 100vh;
+    background-color: rgb(248, 246, 246);
     padding: 20px;
-    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2)
+    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
 
@@ -58,11 +64,14 @@ body {
 }
 
 .main {
+    margin-left: 200px; 
     flex: 1;
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: 100vh;
+    overflow-y: auto; 
 }
 
 .tabla {

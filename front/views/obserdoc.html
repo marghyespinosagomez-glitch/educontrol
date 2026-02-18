@@ -1,1 +1,86 @@
-Observaciones que realizan los docentes
+<div class="d-flex ">
+    <p class="mb-0">Observaciones</p>
+</div>
+<div class="row g-3">
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Filtros</h5>
+        <hr class="flex-grow-1">
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Jornada</label>
+        <select class="form-select" id="filtroGrado">
+            <option value="">Todos</option>
+            <option value="1">Mañana</option>
+            <option value="2">Tarde</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Grado</label>
+        <select class="form-select" id="filtroBloque">
+            <option value="" >Todos</option>
+            <option value="1">Transición</option>
+            <option value="2">Primero</option>
+            <option value="3">Segundo</option>
+            <option value="4">Tercer</option>
+            <option value="5">Cuarto</option>
+            <option value="6">Quinto</option>
+            <option value="7">Sexto</option>
+            <option value="8">Septimo</option>
+            <option value="9">Octavo</option>
+            <option value="10">Noveno</option>
+            <option value="11">Décimo</option>
+            <option value="12">Once</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label">Fecha</label>
+        <input type="text" id="fechaActual" class="form-control" readonly>
+    </div>
+
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Datos</h5>
+        <hr class="flex-grow-1">
+    </div>
+    
+    <div class="tabla-container">
+        <table class="tabla table-bordered" id="tablaInas">
+            <thead class="table-light">
+                <tr id="filaHeadInas">
+                    <th style="width: 5%;">Item</th>
+                    <th style="width: 30%;">Estudiantes</th>
+                    <th style="width: 30%;">Reporte Disciplinario</th>
+                    <th style="width: 30%;">Actividad Complementaria</th>
+                    <th style="width: 10%;">Presente</th>
+                </tr>
+            </thead>
+            <tbody id="table-asis-doc">
+                <tr>
+                    <td>1</td>
+                    <td>Kevin jefferson Fabian Acero Barrera</td>
+                    <td>
+                        <select class="form-select" name="reportdisc" id="reportdisc" required>
+                            <option value="" disabled selected>Seleccionar Reporte</option>
+                            <option value="1">No Aplica</option>
+                            <option value="2">Llegada Tarde a la Institución</option>
+                            <option value="3">Llegada Tarde al Aula</option>
+                            <option value="4">Evadido de Clase</option>
+                            <option value="5">Porte de Uniforme Inadecuado</option>
+                            <option value="6">Uso Inadecuado de Dispositivo</option>
+                            <option value="7">Fomenta Indisciplina</option>
+                            <option value="8">Incumple con las Actividades Academicas</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text">
+                    </td>
+                    <td><input type="radio" name="asis_1" value="presente"></td></td>
+                </tr>
+
+            </tbody>
+        </table>
+            <button type="submit">Guardar Observaciones</button>
+    </div>
+</div>
+<script src="/front/js/asistenciadoc.js"></script>
