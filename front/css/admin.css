@@ -134,3 +134,38 @@ input[type=number] {
     cursor: not-allowed;
     opacity: 0.6;
 }
+
+.input-nota {
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 60px;
+    font-weight: 500;
+    box-shadow: none;
+}
+
+.input-nota:focus {
+    border-bottom: 1px solid #999;
+    background-color: #f9f9f9;
+}
+
+
+.input-titulo-nota {
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 70px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-titulo-nota:hover {
+    border-bottom: 1px dashed #ccc;
+}
+
+.input-titulo-nota:focus {
+    border-bottom: 1px solid #999;
+    background-color: #f9f9f9;
+}

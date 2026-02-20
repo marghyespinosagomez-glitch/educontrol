@@ -1,6 +1,5 @@
 let vistaActual = "";
 
-
 function cargarVista(vista) {
     if (vistaActual === vista) return;
 
@@ -17,12 +16,42 @@ function cargarVista(vista) {
         }
 
         if (vista.includes("subirnotas.html")) {
-            generarTablaNotas();
+            setTimeout(() => {
+                reconstruirTablaNotas([]);
+                activarFiltrosNotas();
+                const btnGuardar = document.getElementById("btnGuardarNotas");
+                if (btnGuardar) {
+                    btnGuardar.addEventListener("click", guardarTodasLasNotas);
+                }
+
+            }, 0);
         }
         
 
         if (vista.includes("asistenciadoc.html")) {
-            mostrarFechaActual();
+                mostrarFechaActual();
+                setTimeout(()=>{
+                reconstruirTablaAsistencia([]);
+                activarFiltrosAsistencia();
+                const btnGuardar = document.getElementById("btnGuardarAsistencia");
+                if (btnGuardar) {
+                    btnGuardar.addEventListener("click", guardarAsistencia);
+                }
+
+        },0 )
+        }
+
+        if (vista.includes("obserdoc.html")) {
+                mostrarFechaActual();
+                setTimeout(()=>{
+                reconstruirTablaObservacion([]);
+                activarFiltrosObservacion();
+                const btnGuardar = document.getElementById("btnGuardarObservacion");
+                if (btnGuardar) {
+                    btnGuardar.addEventListener("click", guardarAsistencia);
+                }
+
+        },0 )
         }
         
 

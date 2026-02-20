@@ -1,54 +1,308 @@
-let contadorNotas = 2;
+if (!window.baseEstudiantes) {
+    window.baseEstudiantes =  [
+        {
+            nombre: "Juan Esteban Pérez",
+            grado: "Cuarto A",
+        },
+        {
+            nombre: "María Fernanda Gómez",
+            grado: "Cuarto A",
+        },
+        {
+            nombre: "Andrés Felipe Torres",
+            grado: "Cuarto A",
+        },
+        {
+            nombre: "Laura Sofía Ramírez",
+            grado: "Cuarto B",
+        },
+        {
+            nombre: "Santiago Rodríguez",
+            grado: "Cuarto B",
+        },
+        {
+            nombre: "Valentina Castro",
+            grado: "Cuarto B",
+        },
+        {
+            nombre: "Nicolás Herrera",
+            grado: "Cuarto C",
+        },
+        {
+            nombre: "Daniela Martínez",
+            grado: "Cuarto C",
+        },
+        {
+            nombre: "Sebastián López",
+            grado: "Cuarto C",
+        },
+        {
+            nombre: "Camila Vargas",
+            grado: "Quinto A",
+        },
+        {
+            nombre: "Natalia Córdoba",
+            grado: "Quinto A",
+        },
+        {
+            nombre: "Martín Salazar",
+            grado: "Quinto A",
+        },
+        {
+            nombre: "Mateo González",
+            grado: "Quinto B",
+        },
+        {
+            nombre: "sabella Rojas",
+            grado: "Quinto B",
+        },
+        {
+            nombre: "Samuel Díaz",
+            grado: "Quinto B",
+        },
+        {
+            nombre: "Sara Valentina Moreno",
+            grado: "Quinto C",
+        },
+        {
+            nombre: "Mariana Silva",
+            grado: "Quinto C",
+        },
+        {
+            nombre: "David Sánchez",
+            grado: "Quinto C",
+        },
+        {
+            nombre: "Jefferson Barrera",
+            grado: "Sexto A",
+        },
+        {
+            nombre: "Carla Sofia Acevedo Jimenez",
+            grado: "Sexto A",
+        },
+        {
+            nombre: "Kevin Acero ",
+            grado: "Sexto A",
+        },
+        {
+            nombre: "Kevin Barrera",
+            grado: "Sexto B",
+        },
+        {
+            nombre: "Jefferson Acero",
+            grado: "Sexto B",
+        },
+        {
+            nombre: "Fabian Acero",
+            grado: "Sexto B",
+        },
+        {
+            nombre: "Fabian Barrera",
+            grado: "Sexto C",
+        },
+        {
+            nombre: "Gabriela Mendoza",
+            grado: "Sexto C",
+        },
+        {
+            nombre: "Alejandro Jiménez",
+            grado: "Sexto C",
+        },
+        {
+            nombre: "Sofía Cárdenas",
+            grado: "Septimo A",
+        },
+        {
+            nombre: "Miguel Ángel Romero",
+            grado: "Septimo A",
+        },
+        {
+            nombre: "Luciana Castillo",
+            grado: "Septimo A",
+        },
+        {
+            nombre: "Tomás Aguilar",
+            grado: "Septimo B",
+        },
+        {
+            nombre: "Paula Andrea Ruiz",
+            grado: "Septimo B",
+        },
+        {
+            nombre: "Felipe Navarro",
+            grado: "Septimo B",
+        },
+        {
+            nombre: "Juliana Pardo",
+            grado: "Septimo C",
+        },
+        {
+            nombre: "Emmanuel Vega",
+            grado: "Septimo C",
+        },
+        {
+            nombre: "Antonia Cabrera",
+            grado: "Septimo C",
+        },
+        {
+            nombre: "Cristian Muñoz",
+            grado: "Octavo A",
+        },
+        {
+            nombre: "Valery Duarte",
+            grado: "Octavo A",
+        },
+        {
+            nombre: "Kevin Andrés Molina",
+            grado: "Octavo A",
+        },
+        {
+            nombre: "Ana Sofía Prieto",
+            grado: "Octavo B",
+        },
+        {
+            nombre: "Esteban Franco",
+            grado: "Octavo B",
+        },
+        {
+            nombre: "Manuela Beltrán",
+            grado: "Octavo B",
+        },
+        {
+            nombre: "Juan Sebastián Arias",
+            grado: "Octavo C",
+        },
+        {
+            nombre: "Salomé Rincón",
+            grado: "Octavo C",
+        },
+        {
+            nombre: "Diego Fernando León",
+            grado: "Octavo C",
+        },
+    ];
+}
+
+let estadoNotas = {
+    columnas: ["N1", "N2"], // ahora guardamos nombres
+    datos: {}
+};
 
 function agregarNota() {
-    contadorNotas++;
+
+    const nuevoNumero = estadoNotas.columnas.length + 1;
+    estadoNotas.columnas.push("N" + nuevoNumero);
+
+    reconstruirTablaNotas();
+}
+
+function reconstruirTablaNotas(listaEstudiantes = baseEstudiantes) {
 
     const filaHead = document.getElementById("filaHead");
-    const notaFinal = document.getElementById("colNotaFinal");
+    const tbody = document.getElementById("tabla-upnota-doc");
 
-    // Crear nueva columna en THEAD
-    const nuevaColumna = document.createElement("th");
-    nuevaColumna.textContent = "N" + contadorNotas;
+    if (!filaHead || !tbody) return;
 
-    filaHead.insertBefore(nuevaColumna, notaFinal);
+    // ===== LIMPIAR HEAD =====
+    filaHead.innerHTML = `
+        <th style="width: 5%;">Item</th>
+        <th style="width: 30%;">Estudiantes</th>
+    `;
 
-    // Agregar celda en cada fila del TBODY
-    const filas = document.querySelectorAll("#bodyNotas tr");
+    estadoNotas.columnas.forEach((nombreColumna, index) => {
+        filaHead.innerHTML += `
+            <th>
+                <input type="text"
+                    class="input-titulo-nota"
+                    value="${nombreColumna}"
+                    onchange="editarTitulo(${index}, this.value)">
+                ${index === estadoNotas.columnas.length - 1 ?
+                    `<button class="btn-add-col" onclick="agregarNota()">+</button>`
+                    : ""
+                }
+            </th>
+        `;
+    });
 
-    filas.forEach(fila => {
-        const nuevaCelda = document.createElement("td");
+    filaHead.innerHTML += `
+        <th style="width: 9%;" id="colNotaFinal">Nota Final</th>
+    `;
+    // ===== RECONSTRUIR BODY =====
+    tbody.innerHTML = "";
 
-        nuevaCelda.innerHTML =
-            '<input type="number" class="form-control nota" oninput="calcularPromedio(this)">';
+    listaEstudiantes.forEach((estudiante, index) => {
 
-        fila.insertBefore(nuevaCelda, fila.querySelector(".notaFinal"));
+        let fila = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${estudiante.nombre}</td>
+        `;
+
+        estadoNotas.columnas.forEach((nombreColumna) => {
+            let valorGuardado = estadoNotas.datos[index]?.[nombreColumna] ?? "0";
+
+            fila += `
+                <td>
+                    <input type="number"
+                        class="nota input-nota"
+                        value="${valorGuardado}"
+                        min="0"
+                        max="5"
+                        step="0.1"
+                        onclick="this.select()"
+                        oninput="guardarNota(${index}, '${nombreColumna}', this)">
+                </td>
+            `;
+
+        });
+
+        fila += `<td class="notaFinal">0</td></tr>`;
+
+        tbody.innerHTML += fila;
+    });
+
+    recalcularTodos();
+}
+
+function guardarNota(index, columna, input) {
+
+    if (!estadoNotas.datos[index]) {
+        estadoNotas.datos[index] = {};
+    }
+    
+    let valor = input.value;
+
+    if (valor === "") {
+        valor = "0";
+        input.value = "0";
+    }
+
+    estadoNotas.datos[index][columna] = valor;
+
+    calcularPromedio(input);
+}
+
+function recalcularTodos() {
+    document.querySelectorAll(".nota").forEach(input => {
+        calcularPromedio(input);
     });
 }
 
-function agregarBotonesColumnas() {
-    const columnas = document.querySelectorAll("#filaHead th");
+function editarTitulo(index, nuevoNombre) {
 
-    columnas.forEach((th, index) => {
+    const nombreLimpio = nuevoNombre.trim();
 
-        if (th.id === "colNotaFinal" || index < 2) return;
+    // Si queda vacío, restaurar el valor anterior
+    if (nombreLimpio === "") {
+        reconstruirTablaNotas();
+        return;
+    }
 
-        const boton = document.createElement("button");
-        boton.className = "btn-add-col";
-        boton.innerHTML = "+";
+    estadoNotas.columnas[index] = nombreLimpio;
 
-        boton.onclick = function (e) {
-            e.stopPropagation();
-            agregarNota();
-            agregarBotonesColumnas();
-            generarTablaNotas();
-            
-        };
-
-        th.appendChild(boton);
-    });
+    reconstruirTablaNotas();
 }
 
-agregarBotonesColumnas();
 
 function calcularPromedio(input) {
 
@@ -70,47 +324,95 @@ function calcularPromedio(input) {
     celdaFinal.textContent = promedio;
 }
 
-const estudiantes = [
-    "Kevin Jefferson Fabian Acero Barrera",
-    "Juan David Acero Urbano",
-    "Maria Fernanda Torres Mujica"
-]
+function guardarTodasLasNotas() {
 
-function generarTablaNotas() {
+    const grado = document.getElementById("filtroGrado");
+    const subgrado = document.getElementById("filtroSubgrado")?.value;
+    const asignatura = document.getElementById("filtroAsignatura")?.value;
 
-    const tbody = document.getElementById("tabla-upnota-doc");
-    const columnasNotas = document.querySelectorAll("#filaHead th").length - 3; 
-    // -3 porque no contamos Item, Estudiantes y Nota Final
+    if (!grado || !subgrado || !asignatura) {
+        alert("Debe seleccionar grado, subgrado y asignatura.");
+        return;
+    }
 
-    tbody.innerHTML = "";
+    const filas = document.querySelectorAll("#tabla-upnota-doc tr");
 
-    estudiantes.forEach((nombre, index) => {
+    let resultado = [];
 
-        let fila = `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${nombre}</td>
-        `;
+    filas.forEach((fila, index) => {
 
-        // Generar inputs para cada N (N1, N2, N3...)
-        for (let i = 0; i < columnasNotas; i++) {
-            fila += `
-                <td>
-                    <input type="number"
-                           class="form-control nota"
-                           min="0"
-                           max="5"
-                           step="0.1"
-                           oninput="calcularPromedio(this)">
-                </td>
-            `;
-        }
+        const nombre = fila.children[1].textContent;
+        const inputs = fila.querySelectorAll(".nota");
 
-        fila += `
-                <td class="notaFinal">0</td>
-            </tr>
-        `;
+        let notasEstudiante = {};
 
-        tbody.innerHTML += fila;
+        inputs.forEach((input, i) => {
+            const nombreColumna = estadoNotas.columnas[i];
+            notasEstudiante[nombreColumna] = input.value;
+        });
+
+        const notaFinal = fila.querySelector(".notaFinal").textContent;
+
+        resultado.push({
+            estudiante: nombre,
+            grado: grado.options[grado.selectedIndex].text+" "+subgrado,
+            asignatura: asignatura,
+            notas: notasEstudiante,
+            promedio: notaFinal
+        });
     });
+
+    console.log("NOTAS GUARDADAS:");
+    console.log(resultado);
+
+    alert("Notas recolectadas correctamente. Revisar consola.");
 }
+
+function aplicarFiltrosNotas() {
+
+    const gradoSelect = document.getElementById("filtroGrado");
+    const subgradoSelect = document.getElementById("filtroSubgrado");
+    const asignaturaSelect = document.getElementById("filtroAsignatura");
+
+    if (!gradoSelect || !subgradoSelect || !asignaturaSelect) return;
+
+    const gradoTexto = gradoSelect.options[gradoSelect.selectedIndex].text;
+    const subgrado = subgradoSelect.value;
+    const asignatura = asignaturaSelect.value;
+
+    // 🚨 Hasta que no estén los 3 filtros no mostrar nada
+    if (!gradoTexto || gradoSelect.value === "" || !subgrado || !asignatura) {
+        reconstruirTablaNotas([]);
+        return;
+    }
+
+    // Construir grado completo
+    const gradoCompleto = gradoTexto + " " + subgrado;
+
+    // Filtrar estudiantes según grado completo
+    const estudiantesFiltrados = baseEstudiantes.filter(est => {
+        return est.grado === gradoCompleto;
+    });
+
+    reconstruirTablaNotas(estudiantesFiltrados);
+}
+
+function activarFiltrosNotas() {
+
+    const filtroGrado = document.getElementById("filtroGrado");
+    const filtroSubgrado = document.getElementById("filtroSubgrado");
+    const filtroAsignatura = document.getElementById("filtroAsignatura");
+
+    if (filtroGrado) {
+        filtroGrado.addEventListener("change", aplicarFiltrosNotas);
+    }
+
+    if (filtroSubgrado) {
+        filtroSubgrado.addEventListener("change", aplicarFiltrosNotas);
+    }
+
+    if (filtroAsignatura) {
+        filtroAsignatura.addEventListener("change", aplicarFiltrosNotas);
+    }
+}
+

@@ -6,18 +6,9 @@
         <h5 class="mb-0 me-2" style="font-size: 18px;">Filtros</h5>
         <hr class="flex-grow-1">
     </div>
-    <div class="col-md-4">
-        <label class="form-label">Jornada</label>
-        <select class="form-select" id="filtroGrado">
-            <option value="">Todos</option>
-            <option value="1">Mañana</option>
-            <option value="2">Tarde</option>
-        </select>
-    </div>
-
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label class="form-label">Grado</label>
-        <select class="form-select" id="filtroBloque">
+        <select class="form-select" id="filtroGrado">
             <option value="" >Todos</option>
             <option value="1">Transición</option>
             <option value="2">Primero</option>
@@ -33,8 +24,31 @@
             <option value="12">Once</option>
         </select>
     </div>
+    <div class="col-md-3">
+        <label class="form-label">Subgrado</label>
+        <select class="form-select" id="filtroSubgrado">
+            <option value="" disabled selected>Seleccionar Letra</option>
+            <option value="A" >A</option>
+            <option value="B" >B</option>
+            <option value="C" >C</option>
+            <option value="D" >D</option>
+            <option value="E" >E</option>
+            <option value="F" >F</option>
+            <option value="G" >G</option>
+            <option value="H" >H</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Asignatura</label>
+        <select class="form-select" id="filtroAsignatura">
+            <option value="" disabled selected>Seleccionar Materia</option>
+            <option value="matematicas">Matemáticas</option>
+            <option value="lengua">Lengua</option>
+            <option value="ciencias">Ciencias</option>
+        </select>
+    </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label class="form-label">Fecha</label>
         <input type="text" id="fechaActual" class="form-control" readonly>
     </div>
@@ -58,21 +72,8 @@
                 </tr>
             </thead>
             <tbody id="table-asis-doc">
-                <tr>
-                    <td>1</td>
-                    <td>Kevin jefferson Fabian Acero Barrera</td>
-                    <td><input type="radio" name="asis_1" value="presente" onchange="actualizarTotal(this)"></td>
-                    <td><input type="radio" name="asis_1" value="evadido" onchange="actualizarTotal(this)"></td>
-                    <td><input type="radio" name="asis_1" value="ausente" onchange="actualizarTotal(this)"></td>
-                    <td><input type="radio" name="asis_1" value="excusa" onchange="actualizarTotal(this)"></td>
-                    <td>
-                        <input type="file" class="form-control form-control-sm input-excusa" disabled accept=".pdf,.jpg,.png">
-                    </td>
-                </tr>
-              
             </tbody>
         </table>
-            <button type="submit">Guardar Asistencias</button>
+            <button type="submit" id="btnGuardarAsistencia">Guardar Asistencias</button>
     </div>
 </div>
-<script src="/front/js/asistenciadoc.js"></script>
