@@ -26,7 +26,6 @@ function cargarVista(vista) {
 
             }, 0);
         }
-        
 
         if (vista.includes("asistenciadoc.html")) {
                 mostrarFechaActual();

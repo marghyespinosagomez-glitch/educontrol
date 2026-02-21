@@ -1,12 +1,25 @@
+let vistaActual = "";
+
 function cargarVista(vista) {
-    $("#contenido").load(vista);
-    cambiarTitulo(vista)
+    if (vistaActual === vista) return;
+
+    vistaActual = vista;
+
+    $("#contenido").load(vista, function () {
+
+        cambiarTitulo(vista);
+
+
+        if (vista.includes("docentes.html")) {
+            activarControlDirector();
+        }
+
+    });
 
 }
 
 $(document).ready(function(){
-    $("#contenido").load("./dashboard.html");
-    cambiarTitulo("./dashboard.html");
+    cargarVista("./dashboard.html");
 });
 
 function cambiarTitulo(ruta) {
