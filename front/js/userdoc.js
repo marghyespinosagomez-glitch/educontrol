@@ -33,6 +33,7 @@ function cargarVista(vista) {
                 setTimeout(()=>{
                 reconstruirTablaAsistencia([]);
                 activarFiltrosAsistencia();
+                activarControlExcusas();
                 const btnGuardar = document.getElementById("btnGuardarAsistencia");
                 if (btnGuardar) {
                     btnGuardar.addEventListener("click", guardarAsistencia);
@@ -58,7 +59,7 @@ function cargarVista(vista) {
     });
 
 }
-
+ 
 $(document).ready(function(){
     cargarVista("./minfo.html");
 });

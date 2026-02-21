@@ -211,28 +211,59 @@ function reconstruirTablaAsistencia(listaEstudiantes = []) {
                 <td>${index + 1}</td>
                 <td>${estudiante.nombre}</td>
 
-                <td><input type="radio" name="asis_${index}" value="Presente"></td>
+                <td><input type="radio" name="asis_${index}" value="Presente" checked></td>
                 <td><input type="radio" name="asis_${index}" value="Evadido"></td>
                 <td><input type="radio" name="asis_${index}" value="Ausente"></td>
                 <td><input type="radio" name="asis_${index}" value="Ausente Excusa"></td>
-                <td><input type="file" class="form-control form-control-sm"></td>
+                <td><input type="file" class="form-control form-control-sm input-excusa" disabled></td>
             </tr>
         `;
 
         tbody.innerHTML += fila;
     });
+
+    activarControlExcusas();
 }
 
-function guardarAsistencia() {
+function activarControlExcusas() {
+
+    const filas = document.querySelectorAll("#table-asis-doc tr");
+
+    filas.forEach(fila => {
+
+        const radios = fila.querySelectorAll("input[type='radio']");
+        const inputFile = fila.querySelector(".input-excusa");
+
+        if (!inputFile) return; // seguridad
+
+        radios.forEach(radio => {
+
+            radio.addEventListener("change", function() {
+
+                if (this.value === "Ausente Excusa" && this.checked) {
+                    inputFile.disabled = false;
+                } else {
+                    inputFile.disabled = true;
+                    inputFile.value = "";
+                }
+
+            });
+
+        });
+
+    });
+}
+
+async function guardarAsistencia() {
 
     const filas = document.querySelectorAll("#table-asis-doc tr");
 
     const gradoSelect = document.getElementById("filtroGrado");
     const subgradoSelect = document.getElementById("filtroSubgrado");
     const asignaturaSelect = document.getElementById("filtroAsignatura");
+
     const hoy = new Date();
     const fecha = hoy.toISOString().split("T")[0];
-
     const dia = hoy.getDay();
 
     const gradoTexto = gradoSelect.options[gradoSelect.selectedIndex].text;
@@ -243,12 +274,13 @@ function guardarAsistencia() {
 
     let resultado = [];
 
-    filas.forEach((fila, index) => {
+    for (let index = 0; index < filas.length; index++) {
 
+        const fila = filas[index];
         const nombre = fila.children[1].textContent;
 
         const radios = fila.querySelectorAll(`input[name="asis_${index}"]`);
-        let estado = "Sin registrar";
+        let estado = "Presente";
 
         radios.forEach(radio => {
             if (radio.checked) {
@@ -256,23 +288,60 @@ function guardarAsistencia() {
             }
         });
 
+        // 📎 Capturar archivo
+        const inputFile = fila.querySelector("input[type='file']");
+        let excusaData = null;
+
+        if (estado === "Ausente Excusa" && inputFile.files.length > 0) {
+
+            const archivo = inputFile.files[0];
+            const extension = archivo.name.split('.').pop().toLowerCase();
+
+            const base64 = await archivoABase64(archivo);
+
+            excusaData = {
+                b64: base64,
+                ext: extension
+            };
+        }
+
         resultado.push({
-            
             grado_id: gradoCompleto,
-            docente_id:"Bartolomeo Casas",
+            docente_id: "Bartolomeo Casas",
             materia_id: asignatura,
             fecha: fecha,
-            dia:dia,
-            estudiante: [{nombre: nombre, estado: estado, excusa:{b64:'base64', ext:'pdf'}}]
+            dia: dia,
+            estudiante: [{
+                nombre: nombre,
+                estado: estado,
+                excusa: excusaData
+            }]
         });
-    });
+    }
 
     console.log("ASISTENCIA GUARDADA:");
     console.log(resultado);
 
 }
 
+function archivoABase64(file) {
+    return new Promise((resolve, reject) => {
 
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const base64Completo = e.target.result;
+            const base64Limpio = base64Completo.split(',')[1];
+            resolve(base64Limpio);
+        };
+
+        reader.onerror = function(error) {
+            reject(error);
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
 
 function aplicarFiltrosAsistencia() {
 

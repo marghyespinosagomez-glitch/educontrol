@@ -1,11 +1,18 @@
+let vistaActual = "";
+
 function cargarVista(vista) {
-    $("#contenido").load(vista);
-    cambiarTitulo(vista)
+    if (vistaActual === vista) return;
+
+    vistaActual = vista;
+
+    $("#contenido").load(vista, function () {
+
+        cambiarTitulo(vista);
+    });
 }
 
 $(document).ready(function(){
-    $("#contenido").load("./views/index.html");
-    cambiarTitulo("./views/index.html");
+    cargarVista("./views/index.html");
 });
 
 function cambiarTitulo(ruta) {
