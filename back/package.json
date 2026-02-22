@@ -1,0 +1,25 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "back para el control de los estudiantes de las instituciones educativas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marghyespinosagomez-glitch/educontrol.git"
+  },
+  "author": "maeg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marghyespinosagomez-glitch/educontrol/issues"
+  },
+  "homepage": "https://github.com/marghyespinosagomez-glitch/educontrol#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "pg": "^8.18.0",
+    "uuid": "^13.0.0"
+  }
+}

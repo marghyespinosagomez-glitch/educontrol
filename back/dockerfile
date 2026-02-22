@@ -1,0 +1,23 @@
+# 1. Base de Node
+FROM node:20-slim
+
+# 2. Instalamos Git y Postgres
+RUN apt-get update && apt-get install -y \
+    git \
+    postgresql \
+    postgresql-contrib \
+    && rm -rf /var/lib/apt/lists/*
+
+# 3. Directorio de trabajo
+WORKDIR /app
+
+# 4. Copiamos el script de arranque (asegúrate de que el archivo se llame start.sh)
+# COPY start.sh /app/start.sh
+# RUN chmod +x /app/start.sh
+
+# 5. Puertos
+EXPOSE 3070
+EXPOSE 5435
+
+# 6. Ejecutar el script
+# CMD ["/bin/bash", "/app/start.sh"]
