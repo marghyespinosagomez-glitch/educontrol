@@ -1,0 +1,101 @@
+th {
+    position: relative;
+}
+
+/* Botón flotante */
+.btn-add-col {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 14px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.2s ease;
+}
+
+.btn-add-col:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Mostrar botón cuando el mouse esté cerca de la línea */
+th:hover .btn-add-col {
+    display: flex;
+}
+
+
+.tabla-container {
+    overflow-x: auto;
+    position: relative;
+}
+
+
+#tablaNotas {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+#tablaNotas th,
+#tablaNotas td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* Columnas de notas (N1, N2, N3...) */
+#tablaNotas th:nth-child(n+3):not(:last-child),
+#tablaNotas td:nth-child(n+3):not(:last-child) {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    padding: 2px;
+    text-align: center;
+}
+
+#tablaNotas td input.nota {
+    width: 100%;
+    height: 28px;
+    padding: 2px;
+    text-align: center;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+#tablaNotas td.notaFinal {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+#tablaNotas th {
+    background: #e9ecef;
+    font-weight: 600;
+}
+.tabla {
+    width: 100%;
+    table-layout: fixed; 
+    border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
+    text-align: center;
+    border: 1px solid rgb(201, 201, 201);
+    vertical-align: middle;
+    padding: 4px;
+    word-wrap: break-word;
+}
+
+.tabla thead {
+    background-color: #f2f2f2;
+    font-weight: 600;
+}
