@@ -1,1 +1,56 @@
-mi información Docente
+<div class="d-flex ">
+    <p class="mb-0">Mi Información</p>
+</div>
+<div class="row g-3">
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Filtros</h5>
+        <hr class="flex-grow-1">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Jornada</label>
+        <select class="form-select" id="filtroJornada">
+            <option value="">Todos</option>
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+        </select>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Grado</label>
+        <select class="form-select" id="filtroGrado">
+            <option value="" >Todos</option>
+            <option value="Transición">Transición</option>
+            <option value="Primero">Primero</option>
+            <option value="Segundo">Segundo</option>
+            <option value="Tercero">Tercero</option>
+            <option value="Cuarto">Cuarto</option>
+            <option value="Quinto">Quinto</option>
+            <option value="Sexto">Sexto</option>
+            <option value="Septimo">Septimo</option>
+            <option value="Octavo">Octavo</option>
+            <option value="Noveno">Noveno</option>
+            <option value="Décimo">Décimo</option>
+            <option value="Once">Once</option>
+        </select>
+    </div>
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Datos</h5>
+        <hr class="flex-grow-1">
+    </div>
+    <div class="mt-3">
+    <table class="tabla table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th style="width: 5%;">Item</th>
+                <th style="width: 17%;">Jornada</th>
+                <th style="width: 17%;">Grado</th>
+                <th style="width: 27%;">Materias</th>
+                <th style="width: 17%;">Día</th>
+                <th style="width: 17%;">Bloque</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-minfo-doc">
+        </tbody>
+    </table>
+</div>
+</div>

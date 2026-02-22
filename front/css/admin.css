@@ -1,21 +1,27 @@
 *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-      display: flex;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* Style the side navigation */
-.sidebar{
+.sidebar {
     width: 200px;
-    height: 100dvh;
-    background-color:  rgb(248, 246, 246);
+    height: 100vh;
+    background-color: rgb(248, 246, 246);
     padding: 20px;
-    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2)
+    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
 
@@ -58,20 +64,32 @@ body {
 }
 
 .main {
+    margin-left: 200px; 
     flex: 1;
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: 100vh;
+    overflow-y: auto; 
 }
-.tabla th{
-    font-size: 13px;
-    margin-top: 10px;
-    padding: 2px;
+
+.tabla {
+    width: 100%;
+    table-layout: fixed; 
+    border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
     text-align: center;
     border: 1px solid; 
+    vertical-align: middle;
+    padding: 2px;
+    word-wrap: break-word;
     border-color: rgb(201, 201, 201);
 }
+
 .bottom-box {
     padding: 1em;
     flex: 1;
@@ -115,4 +133,39 @@ input[type=number] {
 .materia:disabled {
     cursor: not-allowed;
     opacity: 0.6;
+}
+
+.input-nota {
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 60px;
+    font-weight: 500;
+    box-shadow: none;
+}
+
+.input-nota:focus {
+    border-bottom: 1px solid #999;
+    background-color: #f9f9f9;
+}
+
+
+.input-titulo-nota {
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 70px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-titulo-nota:hover {
+    border-bottom: 1px dashed #ccc;
+}
+
+.input-titulo-nota:focus {
+    border-bottom: 1px solid #999;
+    background-color: #f9f9f9;
 }

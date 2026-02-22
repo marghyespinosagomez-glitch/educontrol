@@ -1,45 +1,79 @@
-               <div class="d-flex ">
-                    <p class="mb-0">Docente / Asistencia</p>
-                    <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#nuevoDoc">+ Agregar</button>
-                </div>
-                        <div class="row g-3">
-                            
-                            <div class="col-md-4">
-                                <label class="form-label">Jornada</label>
-                                <select class="form-select" id="filtroGrado">
-                                    <option value="">Todos</option>
-                                    <option value="1">Mañana</option>
-                                    <option value="2">Tarde</option>
-                                </select>
-                            </div>
+<div class="d-flex ">
+    <p class="mb-0">Asistencia</p>
+</div>
+<div class="row g-3">
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Filtros</h5>
+        <hr class="flex-grow-1">
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Grado</label>
+        <select class="form-select" id="filtroGrado">
+            <option value="" >Todos</option>
+            <option value="1">Transición</option>
+            <option value="2">Primero</option>
+            <option value="3">Segundo</option>
+            <option value="4">Tercer</option>
+            <option value="5">Cuarto</option>
+            <option value="6">Quinto</option>
+            <option value="7">Sexto</option>
+            <option value="8">Septimo</option>
+            <option value="9">Octavo</option>
+            <option value="10">Noveno</option>
+            <option value="11">Décimo</option>
+            <option value="12">Once</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Subgrado</label>
+        <select class="form-select" id="filtroSubgrado">
+            <option value="" disabled selected>Seleccionar Letra</option>
+            <option value="A" >A</option>
+            <option value="B" >B</option>
+            <option value="C" >C</option>
+            <option value="D" >D</option>
+            <option value="E" >E</option>
+            <option value="F" >F</option>
+            <option value="G" >G</option>
+            <option value="H" >H</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Asignatura</label>
+        <select class="form-select" id="filtroAsignatura">
+            <option value="" disabled selected>Seleccionar Materia</option>
+            <option value="matematicas">Matemáticas</option>
+            <option value="lengua">Lengua</option>
+            <option value="ciencias">Ciencias</option>
+        </select>
+    </div>
 
-                            <div class="col-md-4">
-                                <label class="form-label">Grado</label>
-                                <select class="form-select" id="filtroBloque">
-                                    <option value="" >Todos</option>
-                                    <option value="1">Transición</option>
-                                    <option value="2">Primero</option>
-                                    <option value="3">Segundo</option>
-                                    <option value="4">Tercer</option>
-                                    <option value="5">Cuarto</option>
-                                    <option value="6">Quinto</option>
-                                    <option value="7">Sexto</option>
-                                    <option value="8">Septimo</option>
-                                    <option value="9">Octavo</option>
-                                    <option value="10">Noveno</option>
-                                    <option value="11">Décimo</option>
-                                    <option value="12">Once</option>
-                                </select>
-                            </div>
+    <div class="col-md-3">
+        <label class="form-label">Fecha</label>
+        <input type="text" id="fechaActual" class="form-control" readonly>
+    </div>
 
-                            <div class="col-md-4">
-                                <label class="form-label">Asignatura</label>
-                                <select class="form-select" id="filtroAsignatura">
-                                    <option value="">Todas</option>
-                                    <option value="matematicas">Matemáticas</option>
-                                    <option value="lengua">Lengua</option>
-                                    <option value="ciencias">Ciencias</option>
-                                </select>
-                            </div>
-
-                        </div>
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Datos</h5>
+        <hr class="flex-grow-1">
+    </div>
+    
+    <div class="tabla-container">
+        <table class="tabla table-bordered" id="tablaInas">
+            <thead class="table-light">
+                <tr id="filaHeadInas">
+                    <th style="width: 5%;">Item</th>
+                    <th style="width: 35%;">Estudiantes</th>
+                    <th style="width: 8%;">Presente</th>
+                    <th style="width: 8%;">Evadido</th>
+                    <th style="width: 8%;">Ausente</th>
+                    <th style="width: 14%;">Ausente Excusa</th>
+                    <th style="width: 22%;">Cargar Excusa</th>
+                </tr>
+            </thead>
+            <tbody id="table-asis-doc">
+            </tbody>
+        </table>
+            <button type="submit" id="btnGuardarAsistencia">Guardar Asistencias</button>
+    </div>
+</div>

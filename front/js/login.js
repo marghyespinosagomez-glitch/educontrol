@@ -17,11 +17,11 @@ function log(){
         localStorage.setItem("rol", usercheck.rol);
 
         if(usercheck.rol === "admin"){
-            window.location.href = "views/admin.html";
+            window.location.href = "./views/admin.html";
         }else if(usercheck.rol === "userdoc"){
-            window.location.href = "views/userdoc.html";
+            window.location.href = "./views/userdoc.html";
         }else{
-            window.location.href = "views/userest.html"
+            window.location.href = "./views/userest.html"
         }
     }else{
         document.getElementById("msg").innerText="Datos Incorrectos";

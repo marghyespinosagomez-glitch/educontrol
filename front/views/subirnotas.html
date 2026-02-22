@@ -1,1 +1,90 @@
-aqui se van a subir las notas
+<div class="d-flex ">
+    <p class="mb-0">Subir Notas</p>
+</div>
+<div class="row g-3">
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Filtros</h5>
+        <hr class="flex-grow-1">
+    </div>
+   <div class="col-md-3">
+        <label class="form-label">Grado</label>
+        <select class="form-select" id="filtroGrado">
+            <option value=""  disabled selected>Seleccionar Grado</option>
+            <option value="1">Transición</option>
+            <option value="2">Primero</option>
+            <option value="3">Segundo</option>
+            <option value="4">Tercer</option>
+            <option value="5">Cuarto</option>
+            <option value="6">Quinto</option>
+            <option value="7">Sexto</option>
+            <option value="8">Septimo</option>
+            <option value="9">Octavo</option>
+            <option value="10">Noveno</option>
+            <option value="11">Décimo</option>
+            <option value="12">Once</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Subgrado</label>
+        <select class="form-select" id="filtroSubgrado">
+            <option value="" disabled selected>Seleccionar Letra</option>
+            <option value="A" >A</option>
+            <option value="B" >B</option>
+            <option value="C" >C</option>
+            <option value="D" >D</option>
+            <option value="E" >E</option>
+            <option value="F" >F</option>
+            <option value="G" >G</option>
+            <option value="H" >H</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Periodo</label>
+        <select class="form-select" id="periodo">
+            <option value="" disabled selected>Seleccionar Periodo</option>
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">Asignatura</label>
+        <select class="form-select" id="filtroAsignatura">
+            <option value="" disabled selected>Seleccionar Materia</option>
+            <option value="matematicas">Matemáticas</option>
+            <option value="lengua">Lengua</option>
+            <option value="ciencias">Ciencias</option>
+        </select>
+    </div>
+
+    <div class="d-flex align-items-center">
+        <h5 class="mb-0 me-2" style="font-size: 18px;">Datos</h5>
+        <hr class="flex-grow-1">
+    </div>
+
+    <div class="tabla-container">
+        <table class="tabla" id="tablaNotas">
+            <thead class="table-light">
+                <tr id="filaHead">
+                    <th style="width:5%">Item</th>
+                    <th style="width:20%">Estudiantes</th>
+                    <th >N1</th>
+                    <th >N2</th>
+                    <th style="width:6%">Saber</th>
+                    <th >N1</th>
+                    <th >N2</th>
+                    <th style="width:6%">Hacer</th>
+                    <th >N1</th>
+                    <th >N2</th>
+                    <th style="width:6%">Ser</th>
+                    <th style="width:9%">Nota Final</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-upnota-doc">
+            </tbody>
+        </table>
+        <button type="submit" id="btnGuardarNotas">Guardar Notas</button>
+    </div>
+</div>

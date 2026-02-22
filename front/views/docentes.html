@@ -1,234 +1,288 @@
-               <div class="d-flex ">
-                    <p class="mb-0">Cuentas / Docentes</p>
-                    <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#nuevoDoc">+ Agregar</button>
-                </div>
-                        <div class="row g-3">
-                            
-                            <div class="col-md-4">
-                                <label class="form-label">Jornada</label>
-                                <select class="form-select" id="filtroGrado">
-                                    <option value="">Todos</option>
-                                    <option value="1">Mañana</option>
-                                    <option value="2">Tarde</option>
+<div class="d-flex ">
+    <p class="mb-0">Cuentas / Docentes</p>
+    <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#nuevoDoc">+ Crear</button>
+</div>
+    <div class="row g-3">
+        
+        <div class="col-md-4">
+            <label class="form-label">Jornada</label>
+            <select class="form-select" id="filtroJornada">
+                <option value="">Todos</option>
+                <option value="1">Mañana</option>
+                <option value="2">Tarde</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Grado</label>
+            <select class="form-select" id="filtroGrado">
+                <option value="" >Todos</option>
+                <option value="1">Transición</option>
+                <option value="2">Primero</option>
+                <option value="3">Segundo</option>
+                <option value="4">Tercer</option>
+                <option value="5">Cuarto</option>
+                <option value="6">Quinto</option>
+                <option value="7">Sexto</option>
+                <option value="8">Septimo</option>
+                <option value="9">Octavo</option>
+                <option value="10">Noveno</option>
+                <option value="11">Décimo</option>
+                <option value="12">Once</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Asignatura</label>
+            <select class="form-select" id="filtroAsignatura">
+                <option value="">Todas</option>
+                <option value="matematicas">Matemáticas</option>
+                <option value="lengua">Lengua</option>
+                <option value="ciencias">Ciencias</option>
+            </select>
+        </div>
+
+    </div> 
+<table class="tabla" style="margin-top: 10px;">
+    <thead>
+        <tr >
+            <th style="width: 5%;">Item</th>
+            <th style="width: 10%;">Documento</th>
+            <th style="width: 5%;">Tipo</th>
+            <th style="width: 28%;">Nombres</th>
+            <th style="width: 13%;">Asignaturas</th>
+            <th style="width: 10%;">Grados</th>
+            <th style="width: 10%;">Telefono</th>
+            <th style="width: 12%;">Dirección</th>
+            <th style="width: 7%;">Acción</th>
+        </tr>
+    </thead>
+    <tbody id="tabla-doc-admin">
+        
+    </tbody>
+</table>
+<div class="modal fade" id="nuevoDoc" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Agregar Docente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAggDoc">
+                    <input type="hidden" id="aggEst" name="aggEst">
+                    <div class="">
+                        <label for="tipodoc" class="form-label">Tipo documento</label>
+                        <select class="form-control" name="tipodoc" id="tipodoc" required>
+                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="CC">Cedula de Ciudadania</option>
+                            <option value="CE">Cedula de Extranjería</option>
+                            <option value="DE">Documento Especial</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label for="doc" class="form-label">Documento</label>
+                        <input type="number" class="form-control" id="doc" name="doc" placeholder="No. Documento" required>
+                    </div>
+                    <div class="">
+                        <label for="name" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre Completo" required>
+                    </div>
+                    <div class="">
+                        <label for="tel" class="form-label">Telefono</label>
+                        <input type="number" class="form-control" id="tel" name="tel" placeholder="No. de Telefono" required>
+                    </div>
+                    <div class="">
+                        <label for="dir" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="dir" name="dir" placeholder="Dirección de residencia" required>
+                    </div>
+                    <div class="">
+                        <label for="email" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Correo" required>
+                    </div>
+                    <div class="">
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="elec-dir" class="form-label">¿Es director de grado?</label>
+                                <select class="form-control mb-2"  name="elec-dir" id="elec-dir">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
                                 </select>
                             </div>
-
-                            <div class="col-md-4">
-                                <label class="form-label">Grado</label>
-                                <select class="form-select" id="filtroBloque">
-                                    <option value="" >Todos</option>
-                                    <option value="1">Transición</option>
-                                    <option value="2">Primero</option>
-                                    <option value="3">Segundo</option>
-                                    <option value="4">Tercer</option>
-                                    <option value="5">Cuarto</option>
-                                    <option value="6">Quinto</option>
-                                    <option value="7">Sexto</option>
-                                    <option value="8">Septimo</option>
-                                    <option value="9">Octavo</option>
-                                    <option value="10">Noveno</option>
-                                    <option value="11">Décimo</option>
-                                    <option value="12">Once</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label class="form-label">Asignatura</label>
-                                <select class="form-select" id="filtroAsignatura">
-                                    <option value="">Todas</option>
-                                    <option value="matematicas">Matemáticas</option>
-                                    <option value="lengua">Lengua</option>
-                                    <option value="ciencias">Ciencias</option>
-                                </select>
-                            </div>
-
-                        </div> 
-                <table class="tabla" style="margin-top: 10px;">
-                    <thead>
-                        <tr >
-                            <th style="width: 8%;">Documento</th>
-                            <th style="width: 3%;">Tipo</th>
-                            <th style="width: 35%;">Nombres</th>
-                            <th style="width: 15%;">Asignaturas</th>
-                            <th style="width: 6%;">Grados</th>
-                            <th style="width: 10%;">Telefono</th>
-                            <th style="width: 10%;">Dirección</th>
-                            <th style="width: 5%;">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla-productos">
-                        
-                    </tbody>
-                </table>
-                <div class="modal fade" id="nuevoDoc" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel">Agregar Docente</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="formAggDoc">
-                                    <input type="hidden" id="aggEst" name="aggEst">
-                                    <div class="">
-                                        <label for="tipodoc" class="form-label">Tipo documento</label>
-                                        <select class="form-control" name="tipodoc" id="tipodoc" required>
-                                            <option value="" disabled selected>Seleccionar</option>
-                                            <option value="CC">Cedula de Ciudadania</option>
-                                            <option value="CE">Cedula de Extranjería</option>
-                                            <option value="DE">Documento Especial</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <label for="doc" class="form-label">Documento</label>
-                                        <input type="number" class="form-control" id="doc" name="doc" placeholder="No. Documento" required>
-                                    </div>
-                                    <div class="">
-                                        <label for="name" class="form-label">Nombres</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre Completo" required>
-                                    </div>
-                                    <div class="">
-                                        <label for="email" class="form-label">Correo</label>
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Correo" required>
-                                    </div>
-                                    <div class="">
-                                        <label for="grado" class="form-label">Asignar Grado</label>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <select class="form-control mb-2"  name="grado" id="grado" required>
-                                                    <option value="" disabled selected>Seleccionar Grado</option>
-                                                    <option value="1">Transición</option>
-                                                    <option value="2">Primero</option>
-                                                    <option value="3">Segundo</option>
-                                                    <option value="4">Tercer</option>
-                                                    <option value="5">Cuarto</option>
-                                                    <option value="6">Quinto</option>
-                                                    <option value="7">Sexto</option>
-                                                    <option value="8">Septimo</option>
-                                                    <option value="9">Octavo</option>
-                                                    <option value="10">Noveno</option>
-                                                    <option value="11">Décimo</option>
-                                                    <option value="12">Once</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-6">
-                                                <select class="form-control" name="letra" id="letra" required>
-                                                    <option value="" disabled selected>Seleccionar Letra</option>
-                                                    <option value="A" >A</option>
-                                                    <option value="B" >B</option>
-                                                    <option value="C" >C</option>
-                                                    <option value="D" >D</option>
-                                                    <option value="E" >E</option>
-                                                    <option value="F" >F</option>
-                                                    <option value="G" >G</option>
-                                                    <option value="H" >H</option>
-                                                </select>
-                                            </div>
+                            <div class="col-7" >
+                                    <label for="gradodirec" class="form-label">Seleccionar Grado</label>
+                                    <div class="row" id="gradoDirector">
+                                        <div class="col-6">
+                                            <select class="form-control mb-2"  name="gradodirec" id="gradodirec" required disabled>
+                                                <option value="" disabled selected>Grado</option>
+                                                <option value="1">Transición</option>
+                                                <option value="2">Primero</option>
+                                                <option value="3">Segundo</option>
+                                                <option value="4">Tercer</option>
+                                                <option value="5">Cuarto</option>
+                                                <option value="6">Quinto</option>
+                                                <option value="7">Sexto</option>
+                                                <option value="8">Septimo</option>
+                                                <option value="9">Octavo</option>
+                                                <option value="10">Noveno</option>
+                                                <option value="11">Décimo</option>
+                                                <option value="12">Once</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <select class="form-control" name="letradirec" id="letradirec" required disabled>
+                                                <option value="" disabled selected>Letra</option>
+                                                <option value="A" >A</option>
+                                                <option value="B" >B</option>
+                                                <option value="C" >C</option>
+                                                <option value="D" >D</option>
+                                                <option value="E" >E</option>
+                                                <option value="F" >F</option>
+                                                <option value="G" >G</option>
+                                                <option value="H" >H</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <label for="matter" class="form-label">Asignaturas</label>
-                                        <div class="row" id="materias">
-                                            <div class="col-6">
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Sociales" id="mat1" name="matter">
-                                                    <label class="form-check-label" for="mat1">
-                                                        Sociales
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Biologia" id="mat2" name="matter">
-                                                    <label class="form-check-label" for="mat2">
-                                                        Biología
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Computacion" id="mat3" name="matter">
-                                                    <label class="form-check-label" for="mat3">
-                                                        Computación
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Deportes" id="mat4" name="matter">
-                                                    <label class="form-check-label" for="mat4">
-                                                        Deportes
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Español" id="mat5" name="matter">
-                                                    <label class="form-check-label" for="mat5">
-                                                        Español
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Filosofia" id="mat6" name="matter">
-                                                    <label class="form-check-label" for="mat6">
-                                                        Filosofía
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Sociales" id="mat1" name="matter">
-                                                    <label class="form-check-label" for="mat1">
-                                                        Sociales
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Biologia" id="mat2" name="matter">
-                                                    <label class="form-check-label" for="mat2">
-                                                        Biología
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Computacion" id="mat3" name="matter">
-                                                    <label class="form-check-label" for="mat3">
-                                                        Computación
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Deportes" id="mat4" name="matter">
-                                                    <label class="form-check-label" for="mat4">
-                                                        Deportes
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input materia" type="checkbox" value="Español" id="mat5" name="matter">
-                                                    <label class="form-check-label" for="mat5">
-                                                        Español
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input  materia" type="checkbox" value="Filosofia" id="mat6" name="matter">
-                                                    <label class="form-check-label" for="mat6">
-                                                        Filosofía
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="">
-                                        <label for="tel" class="form-label">Telefono</label>
-                                        <input type="number" class="form-control" id="tel" name="tel" required>
-                                    </div>
-                                    <div class="">
-                                        <label for="dir" class="form-label">Dirección</label>
-                                        <input type="text" class="form-control" id="dir" name="dir" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-success mt-3">Agregar</button>
-                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div id="asignar">
+                        <div class="">
+                            <label for="grado" class="form-label">Asignar Grado</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <select class="form-control mb-2"  name="grado" id="grado">
+                                        <option value="" disabled selected>Seleccionar Grado</option>
+                                        <option value="1">Transición</option>
+                                        <option value="2">Primero</option>
+                                        <option value="3">Segundo</option>
+                                        <option value="4">Tercer</option>
+                                        <option value="5">Cuarto</option>
+                                        <option value="6">Quinto</option>
+                                        <option value="7">Sexto</option>
+                                        <option value="8">Septimo</option>
+                                        <option value="9">Octavo</option>
+                                        <option value="10">Noveno</option>
+                                        <option value="11">Décimo</option>
+                                        <option value="12">Once</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-control" name="letra" id="letra">
+                                        <option value="" disabled selected>Seleccionar Letra</option>
+                                        <option value="A" >A</option>
+                                        <option value="B" >B</option>
+                                        <option value="C" >C</option>
+                                        <option value="D" >D</option>
+                                        <option value="E" >E</option>
+                                        <option value="F" >F</option>
+                                        <option value="G" >G</option>
+                                        <option value="H" >H</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="">
+                            <label for="matter" class="form-label">Asignaturas</label>
+                            <div class="row" id="materias">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Sociales" id="mat1" name="matter">
+                                        <label class="form-check-label" for="mat1">
+                                            Sociales
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Biologia" id="mat2" name="matter">
+                                        <label class="form-check-label" for="mat2">
+                                            Biología
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Computacion" id="mat3" name="matter">
+                                        <label class="form-check-label" for="mat3">
+                                            Computación
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Deportes" id="mat4" name="matter">
+                                        <label class="form-check-label" for="mat4">
+                                            Deportes
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Español" id="mat5" name="matter">
+                                        <label class="form-check-label" for="mat5">
+                                            Español
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Filosofia" id="mat6" name="matter">
+                                        <label class="form-check-label" for="mat6">
+                                            Filosofía
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Sociales" id="mat1" name="matter">
+                                        <label class="form-check-label" for="mat1">
+                                            Sociales
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Biologia" id="mat2" name="matter">
+                                        <label class="form-check-label" for="mat2">
+                                            Biología
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Computacion" id="mat3" name="matter">
+                                        <label class="form-check-label" for="mat3">
+                                            Computación
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Deportes" id="mat4" name="matter">
+                                        <label class="form-check-label" for="mat4">
+                                            Deportes
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input materia" type="checkbox" value="Español" id="mat5" name="matter">
+                                        <label class="form-check-label" for="mat5">
+                                            Español
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input  materia" type="checkbox" value="Filosofia" id="mat6" name="matter">
+                                        <label class="form-check-label" for="mat6">
+                                            Filosofía
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="btnAgregar" class="btn btn-primary ms-auto">+ Materia</button>
+                        <div id="materiasAgregadas"></div>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-3">Crear Docente</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="../js/docentes.js"></script>
