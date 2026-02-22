@@ -1,28 +1,23 @@
-# 1. Usamos una imagen ligera de Node
+# 1. Base de Node
 FROM node:20-slim
 
-# 2. Instalamos PostgreSQL dentro del contenedor
-# 'apt-get install' es el comando de Linux para instalar programas
+# 2. Instalamos Git y Postgres
 RUN apt-get update && apt-get install -y \
+    git \
     postgresql \
     postgresql-contrib \
     && rm -rf /var/lib/apt/lists/*
 
-# 3. Creamos la carpeta donde vivirá tu código
+# 3. Directorio de trabajo
 WORKDIR /app
 
-# 4. Copiamos los archivos de configuración de Node primero (mejora la velocidad)
-COPY package*.json ./
-RUN npm install
+# 4. Copiamos el script de arranque (asegúrate de que el archivo se llame start.sh)
+# COPY start.sh /app/start.sh
+# RUN chmod +x /app/start.sh
 
-# 5. Copiamos el resto de tu código (incluyendo el start.sh)
-COPY . .
-
-# 6. IMPORTANTE: Damos permiso de ejecución al script de arranque
-RUN chmod +x /app/start.sh
-
-# 7. Avisamos que tu app de Node usará el puerto 3000
+# 5. Puertos
 EXPOSE 3070
+EXPOSE 5435
 
-# 8. El comando que Docker ejecutará al encenderse
-CMD ["/app/start.sh"]
+# 6. Ejecutar el script
+# CMD ["/bin/bash", "/app/start.sh"]

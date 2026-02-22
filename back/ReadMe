@@ -2,6 +2,61 @@ en esta carpeta se llevara a cabo toda la logica y programacion del back
 
 ## tablas usadas ##
 
+-- 1. Definir los posibles estados de asistencia
+CREATE TYPE estado_asistencia AS ENUM ('presente', 'evadido', 'ausente', 'ausente_excusa');
+
+-- 2. Tabla de Sesiones (El evento de la clase)
+CREATE TABLE asistencia_sesiones (
+    id SERIAL PRIMARY KEY,
+    uuid VARCHAR(100) UNIQUE,
+    grado_uuid VARCHAR(100) ,
+    docente_uuid VARCHAR(100),
+    materia_nombre VARCHAR(100),
+    fecha DATE DEFAULT CURRENT_DATE,
+    bloque INTEGER,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. Tabla de Detalle (Alumno por alumno)
+CREATE TABLE asistencia_detalles (
+    id SERIAL PRIMARY KEY,
+    sesion_uuid VARCHAR(100),
+    alumno_uuid VARCHAR(100),
+    estado estado_asistencia NOT NULL,
+    ruta_excusa TEXT,
+    observacion TEXT
+);
+
+CREATE TABLE grados (
+    id SERIAL PRIMARY KEY,
+    uuid VARCHAR(100) NOT NULL,	
+    numero VARCHAR(100),
+    letra VARCHAR(100),
+    docente_director VARCHAR(100),
+    alumnos JSONB,	
+    materias JSONB	
+);
+
+DROP TABLE grados;
+
+CREATE TABLE alumnos (
+    id SERIAL PRIMARY KEY,
+    uuid VARCHAR(100) NOT NULL,	
+    tipo_documento VARCHAR(100),
+    documento VARCHAR(100) UNIQUE,
+    nombre VARCHAR(100) UNIQUE,
+    email VARCHAR(100),
+    telefono VARCHAR(100),
+    direccion VARCHAR(100),
+    acudiente_nombre VARCHAR(100),
+    acudiente_telefono VARCHAR(100),
+    acudiente_email VARCHAR(100),
+    acudiente_direccion VARCHAR(100),
+    grado VARCHAR(100)
+);
+
+SELECT  * FROM grados;
+
 CREATE TABLE docentes (
     id SERIAL PRIMARY KEY,
     uuid VARCHAR(100) NOT NULL,	
@@ -14,23 +69,32 @@ CREATE TABLE docentes (
     datos JSONB
 );
 
-CREATE TABLE docentes (
+CREATE TYPE componente_nota AS ENUM ('ser', 'saber', 'hacer');
+
+CREATE TABLE configuracion_notas (
     id SERIAL PRIMARY KEY,
-    uuid VARCHAR(100) NOT NULL,	
-    tipo_documento VARCHAR(100),
-    documento VARCHAR(100) UNIQUE,
-    nombre VARCHAR(100) UNIQUE,
-    email VARCHAR(100) UNIQUE,
-    telefono VARCHAR(100) UNIQUE,
-    direccion VARCHAR(100),
-    datos TEXT[]
+    uuid VARCHAR(100) UNIQUE,
+    grado_uuid VARCHAR(100),
+    materia_nombre VARCHAR(100),
+    docente_uuid VARCHAR(100),
+    periodo INTEGER, -- 1 o 2
+    componente componente_nota NOT NULL, -- 'ser', 'saber', 'hacer'
+    nombre_actividad VARCHAR(100), -- Ej: 'Asistencia', 'Maqueta', 'Evaluacion 1'
+    porcentaje_sobre_total DECIMAL(5,2), -- El valor que diste (ej: 6.00, 10.00, 15.00)
+    
+    -- Validamos que los porcentajes no se pasen de lo legal en la suma final
+    CONSTRAINT porcentaje_valido CHECK (porcentaje_sobre_total > 0)
 );
 
-CREATE TABLE materias (
+CREATE TABLE notas_estudiantes (
     id SERIAL PRIMARY KEY,
-    uuid VARCHAR(100) NOT NULL,	
-    nombre_materia VARCHAR(100) UNIQUE,
-    docente VARCHAR(100),
-    grado VARCHAR(100)
+    configuracion_uuid UUID,
+    alumno_uuid VARCHAR(100),
+    valor_nota DECIMAL(3,2) CHECK (valor_nota BETWEEN 1.0 AND 5.0),
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    CONSTRAINT unico_alumno_por_actividad UNIQUE (configuracion_uuid, alumno_uuid)
 );
+
+
 

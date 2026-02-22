@@ -3,9 +3,9 @@
     "dbPostgres":{
         "host":"localhost",
         "port":5432,
-        "user":"EduControl",
-        "password":"Casanare1511*",
-        "database":"control",
+        "user":"postgres",
+        "password":"Casanare.2023*",
+        "database":"postgres",
         "tables":{
             "usuarios":"usuarios",
             "estudiantes":"estudiantes",
