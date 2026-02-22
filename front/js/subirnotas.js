@@ -1,188 +1,3 @@
-if (!window.baseEstudiantes) {
-    window.baseEstudiantes =  [
-        {
-            nombre: "Juan Esteban Pérez",
-            grado: "Cuarto A",
-        },
-        {
-            nombre: "María Fernanda Gómez",
-            grado: "Cuarto A",
-        },
-        {
-            nombre: "Andrés Felipe Torres",
-            grado: "Cuarto A",
-        },
-        {
-            nombre: "Laura Sofía Ramírez",
-            grado: "Cuarto B",
-        },
-        {
-            nombre: "Santiago Rodríguez",
-            grado: "Cuarto B",
-        },
-        {
-            nombre: "Valentina Castro",
-            grado: "Cuarto B",
-        },
-        {
-            nombre: "Nicolás Herrera",
-            grado: "Cuarto C",
-        },
-        {
-            nombre: "Daniela Martínez",
-            grado: "Cuarto C",
-        },
-        {
-            nombre: "Sebastián López",
-            grado: "Cuarto C",
-        },
-        {
-            nombre: "Camila Vargas",
-            grado: "Quinto A",
-        },
-        {
-            nombre: "Natalia Córdoba",
-            grado: "Quinto A",
-        },
-        {
-            nombre: "Martín Salazar",
-            grado: "Quinto A",
-        },
-        {
-            nombre: "Mateo González",
-            grado: "Quinto B",
-        },
-        {
-            nombre: "sabella Rojas",
-            grado: "Quinto B",
-        },
-        {
-            nombre: "Samuel Díaz",
-            grado: "Quinto B",
-        },
-        {
-            nombre: "Sara Valentina Moreno",
-            grado: "Quinto C",
-        },
-        {
-            nombre: "Mariana Silva",
-            grado: "Quinto C",
-        },
-        {
-            nombre: "David Sánchez",
-            grado: "Quinto C",
-        },
-        {
-            nombre: "Jefferson Barrera",
-            grado: "Sexto A",
-        },
-        {
-            nombre: "Carla Sofia Acevedo Jimenez",
-            grado: "Sexto A",
-        },
-        {
-            nombre: "Kevin Acero ",
-            grado: "Sexto A",
-        },
-        {
-            nombre: "Kevin Barrera",
-            grado: "Sexto B",
-        },
-        {
-            nombre: "Jefferson Acero",
-            grado: "Sexto B",
-        },
-        {
-            nombre: "Fabian Acero",
-            grado: "Sexto B",
-        },
-        {
-            nombre: "Fabian Barrera",
-            grado: "Sexto C",
-        },
-        {
-            nombre: "Gabriela Mendoza",
-            grado: "Sexto C",
-        },
-        {
-            nombre: "Alejandro Jiménez",
-            grado: "Sexto C",
-        },
-        {
-            nombre: "Sofía Cárdenas",
-            grado: "Septimo A",
-        },
-        {
-            nombre: "Miguel Ángel Romero",
-            grado: "Septimo A",
-        },
-        {
-            nombre: "Luciana Castillo",
-            grado: "Septimo A",
-        },
-        {
-            nombre: "Tomás Aguilar",
-            grado: "Septimo B",
-        },
-        {
-            nombre: "Paula Andrea Ruiz",
-            grado: "Septimo B",
-        },
-        {
-            nombre: "Felipe Navarro",
-            grado: "Septimo B",
-        },
-        {
-            nombre: "Juliana Pardo",
-            grado: "Septimo C",
-        },
-        {
-            nombre: "Emmanuel Vega",
-            grado: "Septimo C",
-        },
-        {
-            nombre: "Antonia Cabrera",
-            grado: "Septimo C",
-        },
-        {
-            nombre: "Cristian Muñoz",
-            grado: "Octavo A",
-        },
-        {
-            nombre: "Valery Duarte",
-            grado: "Octavo A",
-        },
-        {
-            nombre: "Kevin Andrés Molina",
-            grado: "Octavo A",
-        },
-        {
-            nombre: "Ana Sofía Prieto",
-            grado: "Octavo B",
-        },
-        {
-            nombre: "Esteban Franco",
-            grado: "Octavo B",
-        },
-        {
-            nombre: "Manuela Beltrán",
-            grado: "Octavo B",
-        },
-        {
-            nombre: "Juan Sebastián Arias",
-            grado: "Octavo C",
-        },
-        {
-            nombre: "Salomé Rincón",
-            grado: "Octavo C",
-        },
-        {
-            nombre: "Diego Fernando León",
-            grado: "Octavo C",
-        },
-    ];
-}
-
 let estadosPorGrado = {};
 
 function agregarNota(tipo) {
@@ -193,10 +8,10 @@ function agregarNota(tipo) {
     const nuevoNumero = estado[tipo].length + 1;
     estado[tipo].push("N" + nuevoNumero);
 
-    aplicarFiltrosNotas(); // reconstruye solo el grado actual
+    aplicarFiltrosNotas();
 }
 
-function reconstruirTablaNotas(listaEstudiantes = []) {
+function reconstruirTablaNotas(listaEstudiantes = baseEstudiantes || []) {
 
     const estado = obtenerEstadoActual();
     if (!estado) return;
@@ -465,37 +280,6 @@ function guardarNota(index, input) {
     calcularPromedio(input);
 }
 
-function construirComponente(nombreComponente, listaActividades, filaIndex, estado) {
-
-    let actividades = [];
-    let suma = 0;
-
-    listaActividades.forEach((nombreActividad, colIndex) => {
-
-        const valor =
-            parseFloat(
-                estado.datos?.[filaIndex]?.[`${nombreComponente}_${colIndex}`]
-            ) || 0;
-
-        suma += valor;
-
-        actividades.push({
-            nombreActividad: nombreActividad,
-            nota: valor
-        });
-    });
-
-    const promedio = listaActividades.length > 0
-        ? (suma / listaActividades.length)
-        : 0;
-
-    return {
-        componente: nombreComponente,
-        promedio: parseFloat(promedio.toFixed(2)),
-        actividades: actividades
-    };
-}
-
 function actualizarNota(estudianteIndex, componente, nombreActividad, nuevaNota) {
 
     const estado = obtenerEstadoActual();
@@ -536,83 +320,48 @@ function guardarTodasLasNotas() {
 
     const filas = document.querySelectorAll("#tabla-upnota-doc tr");
 
-    let resultado = [];
+    const componentes = ["saber", "hacer", "ser"].map(componente => {
 
-    filas.forEach((fila, filaIndex) => {
+        const actividades = estado[componente].map((nombreActividad, colIndex) => {
 
-        const nombreEstudiante = fila.children[1].textContent;
-        const notaFinal = fila.querySelector(".notaFinal").textContent;
+            const alumnos = [];
 
-        let notas = [];
+            filas.forEach((fila, filaIndex) => {
 
-        // ===== SABER =====
-        let actividadesSaber = [];
+                const nombreEstudiante = fila.children[1].textContent;
 
-        estado.saber.forEach((nombreActividad, colIndex) => {
+                const valor =
+                    estado.datos?.[filaIndex]?.[`${componente}_${colIndex}`] || 0;
 
-            const valor =
-                estado.datos?.[filaIndex]?.[`saber_${colIndex}`] || 0;
-
-            actividadesSaber.push({
-                nombreActividad: nombreActividad,
-                nota: parseFloat(valor)
+                alumnos.push({
+                    alumno_uuid: nombreEstudiante,
+                    nota: parseFloat(valor)
+                });
             });
+
+            return {
+                nombreActividad,
+                alumnos
+            };
         });
 
-        notas.push(
-            construirComponente("saber", estado.saber, filaIndex, estado)
-        );
+        return {
+            componente,
+            actividades
+        };
+    });
 
-        // ===== HACER =====
-        let actividadesHacer = [];
-
-        estado.hacer.forEach((nombreActividad, colIndex) => {
-
-            const valor =
-                estado.datos?.[filaIndex]?.[`hacer_${colIndex}`] || 0;
-
-            actividadesHacer.push({
-                nombreActividad: nombreActividad,
-                nota: parseFloat(valor)
-            });
-        });
-
-        notas.push(
-            construirComponente("hacer", estado.hacer, filaIndex, estado)
-        );
-
-        // ===== SER =====
-        let actividadesSer = [];
-
-        estado.ser.forEach((nombreActividad, colIndex) => {
-
-            const valor =
-                estado.datos?.[filaIndex]?.[`ser_${colIndex}`] || 0;
-
-            actividadesSer.push({
-                nombreActividad: nombreActividad,
-                nota: parseFloat(valor)
-            });
-        });
-
-        notas.push(
-            construirComponente("ser", estado.ser, filaIndex, estado)
-        );
-
-        resultado.push({
-            estudiante: nombreEstudiante,
+    const objSubNotas= {
+        configuracion: {
             grado_uuid: gradoCompleto,
             materia_nombre: asignatura,
             docente_uuid: "Porfirio Acero Robbles",
-            periodo: periodo,
-            notas: notas,
-            promedio: parseFloat(notaFinal)
-        });
+            periodo
+        },
+        componentes
+    };
 
-    });
-
-    console.log("NOTAS GUARDADAS:");
-    console.log(resultado);
+    console.log("NOTAS GUARDADAS: ", objSubNotas);
 
     alert("Notas recolectadas correctamente. Revisar consola.");
 }
@@ -629,7 +378,6 @@ function aplicarFiltrosNotas() {
     const subgrado = subgradoSelect.value;
     const asignatura = asignaturaSelect.value;
 
-    // 🚨 Hasta que no estén los 3 filtros no mostrar nada
     if (!gradoTexto || gradoSelect.value === "" || !subgrado || !asignatura) {
         reconstruirTablaNotas([]);
         return;

@@ -1,187 +1,3 @@
-
-const baseEstudiantes = [
-    {
-        nombre: "Juan Esteban Pérez",
-        grado: "Cuarto A",
-    },
-    {
-        nombre: "María Fernanda Gómez",
-        grado: "Cuarto A",
-    },
-    {
-        nombre: "Andrés Felipe Torres",
-        grado: "Cuarto A",
-    },
-    {
-        nombre: "Laura Sofía Ramírez",
-        grado: "Cuarto B",
-    },
-    {
-        nombre: "Santiago Rodríguez",
-        grado: "Cuarto B",
-    },
-    {
-        nombre: "Valentina Castro",
-        grado: "Cuarto B",
-    },
-    {
-        nombre: "Nicolás Herrera",
-        grado: "Cuarto C",
-    },
-    {
-        nombre: "Daniela Martínez",
-        grado: "Cuarto C",
-    },
-    {
-        nombre: "Sebastián López",
-        grado: "Cuarto C",
-    },
-    {
-        nombre: "Camila Vargas",
-        grado: "Quinto A",
-    },
-    {
-        nombre: "Natalia Córdoba",
-        grado: "Quinto A",
-    },
-    {
-        nombre: "Martín Salazar",
-        grado: "Quinto A",
-    },
-    {
-        nombre: "Mateo González",
-        grado: "Quinto B",
-    },
-    {
-        nombre: "sabella Rojas",
-        grado: "Quinto B",
-    },
-    {
-        nombre: "Samuel Díaz",
-        grado: "Quinto B",
-    },
-    {
-        nombre: "Sara Valentina Moreno",
-        grado: "Quinto C",
-    },
-    {
-        nombre: "Mariana Silva",
-        grado: "Quinto C",
-    },
-    {
-        nombre: "David Sánchez",
-        grado: "Quinto C",
-    },
-    {
-        nombre: "Jefferson Barrera",
-        grado: "Sexto A",
-    },
-    {
-        nombre: "Carla Sofia Acevedo Jimenez",
-        grado: "Sexto A",
-    },
-    {
-        nombre: "Kevin Acero ",
-        grado: "Sexto A",
-    },
-    {
-        nombre: "Kevin Barrera",
-        grado: "Sexto B",
-    },
-    {
-        nombre: "Jefferson Acero",
-        grado: "Sexto B",
-    },
-    {
-        nombre: "Fabian Acero",
-        grado: "Sexto B",
-    },
-    {
-        nombre: "Fabian Barrera",
-        grado: "Sexto C",
-    },
-    {
-        nombre: "Gabriela Mendoza",
-        grado: "Sexto C",
-    },
-    {
-        nombre: "Alejandro Jiménez",
-        grado: "Sexto C",
-    },
-    {
-        nombre: "Sofía Cárdenas",
-        grado: "Septimo A",
-    },
-    {
-        nombre: "Miguel Ángel Romero",
-        grado: "Septimo A",
-    },
-    {
-        nombre: "Luciana Castillo",
-        grado: "Septimo A",
-    },
-    {
-        nombre: "Tomás Aguilar",
-        grado: "Septimo B",
-    },
-    {
-        nombre: "Paula Andrea Ruiz",
-        grado: "Septimo B",
-    },
-    {
-        nombre: "Felipe Navarro",
-        grado: "Septimo B",
-    },
-    {
-        nombre: "Juliana Pardo",
-        grado: "Septimo C",
-    },
-    {
-        nombre: "Emmanuel Vega",
-        grado: "Septimo C",
-    },
-    {
-        nombre: "Antonia Cabrera",
-        grado: "Septimo C",
-    },
-    {
-        nombre: "Cristian Muñoz",
-        grado: "Octavo A",
-    },
-    {
-        nombre: "Valery Duarte",
-        grado: "Octavo A",
-    },
-    {
-        nombre: "Kevin Andrés Molina",
-        grado: "Octavo A",
-    },
-    {
-        nombre: "Ana Sofía Prieto",
-        grado: "Octavo B",
-    },
-    {
-        nombre: "Esteban Franco",
-        grado: "Octavo B",
-    },
-    {
-        nombre: "Manuela Beltrán",
-        grado: "Octavo B",
-    },
-    {
-        nombre: "Juan Sebastián Arias",
-        grado: "Octavo C",
-    },
-    {
-        nombre: "Salomé Rincón",
-        grado: "Octavo C",
-    },
-    {
-        nombre: "Diego Fernando León",
-        grado: "Octavo C",
-    },
-];
-
 function mostrarFechaActual() {
 
     const input = document.getElementById("fechaActual");
@@ -197,32 +13,59 @@ function mostrarFechaActual() {
     });
 }
 
-function reconstruirTablaAsistencia(listaEstudiantes = []) {
+function reconstruirTablaAsistencia(listaEstudiantes = baseEstudiantes || []) {
 
     const tbody = document.getElementById("table-asis-doc");
     if (!tbody) return;
 
     tbody.innerHTML = "";
 
+    // listaEstudiantes.forEach((estudiante, index) => {
+
+    //     const fila = `
+    //         <tr>
+    //             <td>${index + 1}</td>
+    //             <td>${estudiante.nombre}</td>
+
+    //             <td><input type="radio" name="asis_${index}" value="Presente" checked></td>
+    //             <td><input type="radio" name="asis_${index}" value="Evadido"></td>
+    //             <td><input type="radio" name="asis_${index}" value="Ausente"></td>
+    //             <td><input type="radio" name="asis_${index}" value="Ausente Excusa"></td>
+    //             <td><input type="file" class="form-control form-control-sm input-excusa" disabled></td>
+    //         </tr>
+    //     `;
+
+    //     tbody.innerHTML += fila;
+    // });
+
+    // Usamos DocumentFragment para mejor performance
+    const fragment = document.createDocumentFragment();
+
     listaEstudiantes.forEach((estudiante, index) => {
 
-        const fila = `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${estudiante.nombre}</td>
+        const tr = document.createElement("tr");
 
-                <td><input type="radio" name="asis_${index}" value="Presente" checked></td>
-                <td><input type="radio" name="asis_${index}" value="Evadido"></td>
-                <td><input type="radio" name="asis_${index}" value="Ausente"></td>
-                <td><input type="radio" name="asis_${index}" value="Ausente Excusa"></td>
-                <td><input type="file" class="form-control form-control-sm input-excusa" disabled></td>
-            </tr>
+        // Guardamos datos reales en atributos
+        tr.dataset.nombre = estudiante.nombre;
+        tr.dataset.grado = estudiante.grado;
+
+        tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${estudiante.nombre}</td>
+
+            <td><input type="radio" name="asis_${index}" value="Presente" checked></td>
+            <td><input type="radio" name="asis_${index}" value="Evadido"></td>
+            <td><input type="radio" name="asis_${index}" value="Ausente"></td>
+            <td><input type="radio" name="asis_${index}" value="Ausente Excusa"></td>
+            <td><input type="file" class="form-control form-control-sm input-excusa" disabled></td>
         `;
 
-        tbody.innerHTML += fila;
+        fragment.appendChild(tr);
     });
-
+    tbody.appendChild(fragment);
     activarControlExcusas();
+
+   
 }
 
 function activarControlExcusas() {
@@ -272,8 +115,6 @@ async function guardarAsistencia() {
 
     const gradoCompleto = gradoTexto + " " + subgrado;
 
-    let resultado = [];
-
     for (let index = 0; index < filas.length; index++) {
 
         const fila = filas[index];
@@ -305,7 +146,7 @@ async function guardarAsistencia() {
             };
         }
 
-        resultado.push({
+        const objAsis ={
             grado_id: gradoCompleto,
             docente_id: "Bartolomeo Casas",
             materia_id: asignatura,
@@ -316,11 +157,13 @@ async function guardarAsistencia() {
                 estado: estado,
                 excusa: excusaData
             }]
-        });
+        };
+        console.log("ASISTENCIA GUARDADA: ", objAsis);
     }
 
-    console.log("ASISTENCIA GUARDADA:");
-    console.log(resultado);
+    
+
+    return objAsis;
 
 }
 

@@ -48,7 +48,7 @@ function cargarVista(vista) {
                 activarFiltrosObservacion();
                 const btnGuardar = document.getElementById("btnGuardarObservacion");
                 if (btnGuardar) {
-                    btnGuardar.addEventListener("click", guardarAsistencia);
+                    btnGuardar.addEventListener("click", guardarObservacion);
                 }
 
         },0 )

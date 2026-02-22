@@ -1,185 +1,170 @@
-if (!window.baseEstudiantes) {
-    window.baseEstudiantes =  [
-        {
-            nombre: "Juan Esteban Pérez",
-            grado: "Cuarto A",
-        },
-        {
-            nombre: "María Fernanda Gómez",
-            grado: "Cuarto A",
-        },
-        {
-            nombre: "Andrés Felipe Torres",
-            grado: "Cuarto A",
-        },
-        {
-            nombre: "Laura Sofía Ramírez",
-            grado: "Cuarto B",
-        },
-        {
-            nombre: "Santiago Rodríguez",
-            grado: "Cuarto B",
-        },
-        {
-            nombre: "Valentina Castro",
-            grado: "Cuarto B",
-        },
-        {
-            nombre: "Nicolás Herrera",
-            grado: "Cuarto C",
-        },
-        {
-            nombre: "Daniela Martínez",
-            grado: "Cuarto C",
-        },
-        {
-            nombre: "Sebastián López",
-            grado: "Cuarto C",
-        },
-        {
-            nombre: "Camila Vargas",
-            grado: "Quinto A",
-        },
-        {
-            nombre: "Natalia Córdoba",
-            grado: "Quinto A",
-        },
-        {
-            nombre: "Martín Salazar",
-            grado: "Quinto A",
-        },
-        {
-            nombre: "Mateo González",
-            grado: "Quinto B",
-        },
-        {
-            nombre: "sabella Rojas",
-            grado: "Quinto B",
-        },
-        {
-            nombre: "Samuel Díaz",
-            grado: "Quinto B",
-        },
-        {
-            nombre: "Sara Valentina Moreno",
-            grado: "Quinto C",
-        },
-        {
-            nombre: "Mariana Silva",
-            grado: "Quinto C",
-        },
-        {
-            nombre: "David Sánchez",
-            grado: "Quinto C",
-        },
-        {
-            nombre: "Jefferson Barrera",
-            grado: "Sexto A",
-        },
-        {
-            nombre: "Carla Sofia Acevedo Jimenez",
-            grado: "Sexto A",
-        },
-        {
-            nombre: "Kevin Acero ",
-            grado: "Sexto A",
-        },
-        {
-            nombre: "Kevin Barrera",
-            grado: "Sexto B",
-        },
-        {
-            nombre: "Jefferson Acero",
-            grado: "Sexto B",
-        },
-        {
-            nombre: "Fabian Acero",
-            grado: "Sexto B",
-        },
-        {
-            nombre: "Fabian Barrera",
-            grado: "Sexto C",
-        },
-        {
-            nombre: "Gabriela Mendoza",
-            grado: "Sexto C",
-        },
-        {
-            nombre: "Alejandro Jiménez",
-            grado: "Sexto C",
-        },
-        {
-            nombre: "Sofía Cárdenas",
-            grado: "Septimo A",
-        },
-        {
-            nombre: "Miguel Ángel Romero",
-            grado: "Septimo A",
-        },
-        {
-            nombre: "Luciana Castillo",
-            grado: "Septimo A",
-        },
-        {
-            nombre: "Tomás Aguilar",
-            grado: "Septimo B",
-        },
-        {
-            nombre: "Paula Andrea Ruiz",
-            grado: "Septimo B",
-        },
-        {
-            nombre: "Felipe Navarro",
-            grado: "Septimo B",
-        },
-        {
-            nombre: "Juliana Pardo",
-            grado: "Septimo C",
-        },
-        {
-            nombre: "Emmanuel Vega",
-            grado: "Septimo C",
-        },
-        {
-            nombre: "Antonia Cabrera",
-            grado: "Septimo C",
-        },
-        {
-            nombre: "Cristian Muñoz",
-            grado: "Octavo A",
-        },
-        {
-            nombre: "Valery Duarte",
-            grado: "Octavo A",
-        },
-        {
-            nombre: "Kevin Andrés Molina",
-            grado: "Octavo A",
-        },
-        {
-            nombre: "Ana Sofía Prieto",
-            grado: "Octavo B",
-        },
-        {
-            nombre: "Esteban Franco",
-            grado: "Octavo B",
-        },
-        {
-            nombre: "Manuela Beltrán",
-            grado: "Octavo B",
-        },
-        {
-            nombre: "Juan Sebastián Arias",
-            grado: "Octavo C",
-        },
-        {
-            nombre: "Salomé Rincón",
-            grado: "Octavo C",
-        },
-        {
-            nombre: "Diego Fernando León",
-            grado: "Octavo C",
-        },
-    ];
+function mostrarFechaActual() {
+
+    const input = document.getElementById("fechaActual");
+    if (!input) return;
+
+    const hoy = new Date();
+
+    input.value = hoy.toLocaleDateString("es-ES", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
 }
 
+function reconstruirTablaObservacion(listaEstudiantes = baseEstudiantes || []) {
+
+    const tbody = document.getElementById("table-obser-doc");
+    if (!tbody) return;
+
+    // Limpiar tabla
+    tbody.innerHTML = "";
+
+    // Usamos DocumentFragment para mejor performance
+    const fragment = document.createDocumentFragment();
+
+    listaEstudiantes.forEach((estudiante, index) => {
+
+        const tr = document.createElement("tr");
+
+        // Guardamos datos reales en atributos
+        tr.dataset.nombre = estudiante.nombre;
+        tr.dataset.grado = estudiante.grado;
+
+        tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${estudiante.nombre}</td>
+
+            <td>
+                <select class="form-select reporte-select" required>
+                    <option value="" disabled selected>Seleccionar Reporte</option>
+                    <option value="1">Actividad Complementaria</option>
+                    <option value="2">Llegada Tarde a la Institución</option>
+                    <option value="3">Llegada Tarde al Aula</option>
+                    <option value="4">Evadido de Clase</option>
+                    <option value="5">Porte de Uniforme Inadecuado</option>
+                    <option value="6">Uso Inadecuado de Dispositivo</option>
+                    <option value="7">Fomenta Indisciplina</option>
+                    <option value="8">Incumple con las Actividades Academicas</option>
+                </select>
+            </td>
+
+            <td>
+                <input class="form-control actividad-input" type="text">
+            </td>
+
+            <td>
+                <input type="radio" class="estado-radio" value="presente">
+            </td>
+        `;
+
+        fragment.appendChild(tr);
+    });
+
+    tbody.appendChild(fragment);
+}
+
+function guardarObservacion() {
+
+    const filas = document.querySelectorAll("#table-obser-doc tr");
+
+    const gradoSelect = document.getElementById("filtroGrado");
+    const subgradoSelect = document.getElementById("filtroSubgrado");
+    const asignaturaSelect = document.getElementById("filtroAsignatura");
+
+    if (!gradoSelect.value || !subgradoSelect.value || !asignaturaSelect.value) {
+        alert("Debe seleccionar grado, subgrado y asignatura.");
+        return;
+    }
+
+    const hoy = new Date();
+    const fecha = hoy.toISOString().split("T")[0];
+    const dia = hoy.getDay();
+
+    const gradoTexto = gradoSelect.options[gradoSelect.selectedIndex].text;
+    const subgrado = subgradoSelect.value;
+    const asignatura = asignaturaSelect.value;
+
+    const gradoCompleto = `${gradoTexto} ${subgrado}`;
+
+    const estudiantes = [];
+
+    filas.forEach((fila) => {
+
+        const nombre = fila.dataset.nombre;
+
+        const reporte = fila.querySelector(".reporte-select")?.value || null;
+        const complementaria = fila.querySelector(".actividad-input")?.value || "";
+        const estado = fila.querySelector(".estado-radio:checked")?.value;
+
+        estudiantes.push({
+            nombre,
+            reporte_dis: reporte,
+            actividad_com: complementaria,
+            estado
+        });
+
+    });
+
+    const objObser = {
+        grado_id: gradoCompleto,
+        docente_id: "Bartolomeo Casas",
+        materia_id: asignatura,
+        fecha,
+        dia,
+        estudiantes
+    };
+
+    console.log("Observación Guardada:", objObser);
+
+    return objObser;
+}
+
+function aplicarFiltrosObservacion() {
+
+    const gradoSelect = document.getElementById("filtroGrado");
+    const subgradoSelect = document.getElementById("filtroSubgrado");
+    const asignaturaSelect = document.getElementById("filtroAsignatura");
+
+    if (!gradoSelect || !subgradoSelect || !asignaturaSelect) return;
+
+    const gradoTexto = gradoSelect.options[gradoSelect.selectedIndex].text;
+    const subgrado = subgradoSelect.value;
+    const asignatura = asignaturaSelect.value;
+
+    // 🚨 Hasta que no estén los 3 filtros no mostrar nada
+    if (!gradoTexto || gradoSelect.value === "" || !subgrado || !asignatura) {
+        reconstruirTablaObservacion([]);
+        return;
+    }
+
+    // Construir grado completo
+    const gradoCompleto = gradoTexto + " " + subgrado;
+
+    // Filtrar estudiantes según grado completo
+    const estudiantesFiltrados = baseEstudiantes.filter(est => {
+        return est.grado === gradoCompleto;
+    });
+
+    reconstruirTablaObservacion(estudiantesFiltrados);
+}
+
+function activarFiltrosObservacion() {
+
+    const filtroGrado = document.getElementById("filtroGrado");
+    const filtroSubgrado = document.getElementById("filtroSubgrado");
+    const filtroAsignatura = document.getElementById("filtroAsignatura");
+
+    if (filtroGrado) {
+        filtroGrado.addEventListener("change", aplicarFiltrosObservacion);
+    }
+
+    if (filtroSubgrado) {
+        filtroSubgrado.addEventListener("change", aplicarFiltrosObservacion);
+    }
+
+    if (filtroAsignatura) {
+        filtroAsignatura.addEventListener("change", aplicarFiltrosObservacion);
+    }
+}
