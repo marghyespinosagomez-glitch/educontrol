@@ -4,36 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="/css/admin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="shortcut icon" href="/front/images/iconT.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/iconT.png" type="image/png">
+    <link href="/css/responsive.css" rel="stylesheet" />
 
 </head>
 <body>
     <div class="sidebar">
         <div style="width: 100px;">
-            <img src="../images/iconlog.png" style="margin-left: 25px; width: 100%; height: auto; "/>    
+            <img src="/images/iconlog.png" style="margin-left: 25px; width: 100%; height: auto; "/>    
         </div>
 
-        <a href="#" onclick="cargarVista('./dashboard.html')">Dashboard</a>
+        <a href="#" class="nav-link-spa" data-vista="/dashboard.html">Dashboard</a>
 
         <div class="dropdown">Cuentas
             <div class="dropdown-content">
-                <a href="#" onclick="cargarVista('./docentes.html')">Docentes</a>
-                <a href="#" onclick="cargarVista('./estudiantes.html')">Estudiantes</a>
+                <a href="#" class="nav-link-spa" data-vista="/docentes.html">Docentes</a>
+                <a href="#" class="nav-link-spa" data-vista="/estudiantes.html">Estudiantes</a>
             </div>
         </div>
 
-        <a href="#" onclick="cargarVista('./grados.html')">Grados</a>
+        <a href="#" class="nav-link-spa" data-vista="/grados.html">Grados</a>
 
+        <a href="#" class="nav-link-spa" data-vista="/notasglob.html">Notas</a>
 
-        <a href="#" onclick="cargarVista('./notasglob.html')">Notas</a>
+        <a href="#" class="nav-link-spa" data-vista="/asistencia.html">Asistencias</a>
 
-        <a href="#" onclick="cargarVista('./asistencia.html')">Asistencias</a>
-
-        <a href="#" onclick="cargarVista('./obser.html')">Observaciones</a>
+        <a href="#" class="nav-link-spa" data-vista="/obser.html">Observaciones</a>
 
     </div>
 
@@ -47,7 +47,10 @@
             
         </div>
     </div>
-    <script src="../js/admin.js"></script>
-    <script src="../js/loguout.js"></script>
+    <script src="/js/router.js"></script>
+    <script src="/js/loguout.js"></script>
+    <script src="/js/docentes.js"></script>
+    <script src="/js/estudiantes.js"></script>
+    <script src="/js/grados.js"></script>  
 </body>
 </html>
