@@ -41,7 +41,8 @@ document.addEventListener("submit",function(e){
     }
 });
 
-// function initEstudiantes(){
-// }
+function initEstudiantes(){
+}
 
 
+ 

@@ -159,14 +159,10 @@ async function guardarAsistencia() {
             }]
         };
         console.log("ASISTENCIA GUARDADA: ", objAsis);
+        return objAsis;  
     }
-
     
-
-    return objAsis;
-
-}
-
+}        
 function archivoABase64(file) {
     return new Promise((resolve, reject) => {
 
@@ -232,4 +228,19 @@ function activarFiltrosAsistencia() {
     if (filtroAsignatura) {
         filtroAsignatura.addEventListener("change", aplicarFiltrosAsistencia);
     }
+}
+
+function initAsistenciasDoc(){
+    mostrarFechaActual();
+    setTimeout(() => {
+        reconstruirTablaAsistencia([]);
+        activarFiltrosAsistencia();
+        activarControlExcusas();
+        const btnGuardar = document.getElementById("btnGuardarAsistencia");
+        if (btnGuardar) {
+            btnGuardar.addEventListener("click", guardarAsistencia);
+        }
+
+    }, 0);
+
 }

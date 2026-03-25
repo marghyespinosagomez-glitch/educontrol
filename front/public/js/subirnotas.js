@@ -441,3 +441,15 @@ function obtenerEstadoActual() {
 
     return estadosPorGrado[clave];
 }
+ 
+function initSubirNotas(){
+    setTimeout(() => {
+        reconstruirTablaNotas([]);
+        activarFiltrosNotas();
+        const btnGuardar = document.getElementById("btnGuardarNotas");
+        if (btnGuardar) {
+            btnGuardar.addEventListener("click", guardarTodasLasNotas);
+        }
+
+    }, 0);
+}

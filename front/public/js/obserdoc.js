@@ -55,7 +55,7 @@ function reconstruirTablaObservacion(listaEstudiantes = baseEstudiantes || []) {
             </td>
 
             <td>
-                <input type="radio" class="estado-radio" value="presente">
+                <input type="radio" class="estado-radio">
             </td>
         `;
 
@@ -92,20 +92,39 @@ function guardarObservacion() {
 
     filas.forEach((fila) => {
 
-        const nombre = fila.dataset.nombre;
-
-        const reporte = fila.querySelector(".reporte-select")?.value || null;
-        const complementaria = fila.querySelector(".actividad-input")?.value || "";
         const estado = fila.querySelector(".estado-radio:checked")?.value;
+
+        // SOLO guardar si tiene estado seleccionado
+        if (!estado) return;
+
+        const nombre = fila.dataset.nombre;
+        const reporte = fila.querySelector(".reporte-select");
+        const complementaria = fila.querySelector(".actividad-input")?.value || "";
 
         estudiantes.push({
             nombre,
-            reporte_dis: reporte,
+            reporte_dis: reporte.options[reporte.selectedIndex].text,
             actividad_com: complementaria,
             estado
         });
 
     });
+    // filas.forEach((fila) => {
+
+    //     const nombre = fila.dataset.nombre;
+
+    //     const reporte = fila.querySelector(".reporte-select")?.value || null;
+    //     const complementaria = fila.querySelector(".actividad-input")?.value || "";
+    //     const estado = fila.querySelector(".estado-radio:checked")?.value;
+
+    //     estudiantes.push({
+    //         nombre,
+    //         reporte_dis: reporte,
+    //         actividad_com: complementaria,
+    //         estado
+    //     });
+
+    // });
 
     const objObser = {
         grado_id: gradoCompleto,
@@ -133,7 +152,7 @@ function aplicarFiltrosObservacion() {
     const subgrado = subgradoSelect.value;
     const asignatura = asignaturaSelect.value;
 
-    // 🚨 Hasta que no estén los 3 filtros no mostrar nada
+    // Hasta que no estén los 3 filtros no mostrar nada
     if (!gradoTexto || gradoSelect.value === "" || !subgrado || !asignatura) {
         reconstruirTablaObservacion([]);
         return;
@@ -167,4 +186,16 @@ function activarFiltrosObservacion() {
     if (filtroAsignatura) {
         filtroAsignatura.addEventListener("change", aplicarFiltrosObservacion);
     }
+}
+
+function initObservacionesDoc(){
+    mostrarFechaActual();
+    setTimeout(() => {
+        reconstruirTablaObservacion([]);
+        activarFiltrosObservacion();
+        const btnGuardar = document.getElementById("btnGuardarObservacion");
+        if (btnGuardar) {
+            btnGuardar.addEventListener("click", guardarObservacion);
+        }
+    }, 0);
 }

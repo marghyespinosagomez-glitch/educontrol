@@ -139,3 +139,71 @@
     max-width: 1170px;
   }
 }
+
+/* ============================= */
+/* 📱 RESPONSIVE ADMIN PANEL */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* 🔥 Sidebar pasa a horizontal */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .sidebar img {
+    width: 40px !important;
+    margin: 0 !important;
+  }
+
+  .sidebar a {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  /* 🔥 Main ocupa todo */
+  .main {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  /* 🔥 Header adaptable */
+  .top-box {
+    height: auto;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .top-box button {
+    float: none !important;
+    margin-top: 10px;
+  }
+
+  /* 🔥 TABLAS RESPONSIVE */
+  .tabla {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* 🔥 Inputs más pequeños */
+  .input-nota {
+    width: 40px;
+  }
+
+  .input-titulo-nota {
+    width: 50px;
+  }
+}

@@ -64,12 +64,12 @@ $(document).ready(function () {
     $(".materia").prop("disabled", true);
 
     $("#grado, #letra").on("change", function () {
-        validarSeleccion();
+        validarSeleccionDocentes();
     });
 
 });
 
-function validarSeleccion() {
+function validarSeleccionDocentes() {
 
     let grado = $("#grado").val();
     let letra = $("#letra").val();
@@ -82,7 +82,7 @@ function validarSeleccion() {
     }
 }
 
-function activarControlDirector() {
+function activarControlDirectorDocentes() {
 
     const selectDirector = document.getElementById("elec-dir");
     const grado = document.getElementById("gradodirec");
@@ -127,11 +127,11 @@ $(document).off("click", "#btnAgregarMatDoc").on("click", "#btnAgregarMatDoc", f
         materia: materias
     });
 
-    mostrarMaterias();
-    limpiarCampos();
+    mostrarMateriasDocentes();
+    limpiarCamposDocentes();
 });
 
-function mostrarMaterias() {
+function mostrarMateriasDocentes() {
 
     const contenedor = document.getElementById("materiasAgregadas");
     contenedor.innerHTML = "";
@@ -146,7 +146,7 @@ function mostrarMaterias() {
     });
 }
 
-function limpiarCampos() {
+function limpiarCamposDocentes() {
 
     document.getElementById("grado").selectedIndex = 0;
     document.getElementById("letra").selectedIndex = 0;
@@ -155,5 +155,6 @@ function limpiarCampos() {
 }
 
 function initDocentes(){
-    activarControlDirector();
+    activarControlDirectorDocentes();
 }
+ 

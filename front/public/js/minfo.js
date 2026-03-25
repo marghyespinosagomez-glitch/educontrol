@@ -258,7 +258,7 @@ function generarTablaInfo(data = gradosAsignados) {
         contadorItem++;
     });
 }
-
+ 
 function aplicarFiltros() {
 
     const jornada = document.getElementById("filtroJornada").value;
@@ -292,3 +292,7 @@ function activarFiltros() {
     }
 }
 
+function initMinfo(){
+    generarTablaInfo();
+    activarFiltros();    
+}

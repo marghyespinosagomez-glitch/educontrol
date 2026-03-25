@@ -1,80 +1,69 @@
-let vistaActual = "";
+const contenedor = document.getElementById("contenido")
 
-function cargarVista(vista) {
-    if (vistaActual === vista) return;
+async function cargarVista(vista){
 
-    vistaActual = vista;
+    try{
 
-    $("#contenido").load(vista, function () {
+        const res = await fetch(vista)
+        const html = await res.text()
 
-        cambiarTitulo(vista);
+        contenedor.innerHTML = html
 
+        cambiarTitulo(vista)
+        inicializarVista(vista)
 
-        if (vista.includes("/minfo.html")) {
-            generarTablaInfo();
-            activarFiltros();    
-        }
+    }catch(e){
 
-        if (vista.includes("/subirnotas.html")) {
-            setTimeout(() => {
-                reconstruirTablaNotas([]);
-                activarFiltrosNotas();
-                const btnGuardar = document.getElementById("btnGuardarNotas");
-                if (btnGuardar) {
-                    btnGuardar.addEventListener("click", guardarTodasLasNotas);
-                }
+        contenedor.innerHTML = "<h2>Error cargando la vista</h2>"
 
-            }, 0);
-        }
-
-        if (vista.includes("/asistenciadoc.html")) {
-                mostrarFechaActual();
-                setTimeout(()=>{
-                reconstruirTablaAsistencia([]);
-                activarFiltrosAsistencia();
-                activarControlExcusas();
-                const btnGuardar = document.getElementById("btnGuardarAsistencia");
-                if (btnGuardar) {
-                    btnGuardar.addEventListener("click", guardarAsistencia);
-                }
-
-        },0 )
-        }
-
-        if (vista.includes("/obserdoc.html")) {
-                mostrarFechaActual();
-                setTimeout(()=>{
-                reconstruirTablaObservacion([]);
-                activarFiltrosObservacion();
-                const btnGuardar = document.getElementById("btnGuardarObservacion");
-                if (btnGuardar) {
-                    btnGuardar.addEventListener("click", guardarObservacion);
-                }
-
-        },0 )
-        }
-        
-
-    });
+    }
 
 }
- 
-$(document).ready(function(){
-    cargarVista("/minfo.html");
-});
 
-function cambiarTitulo(ruta) {
-    let tituloBase = "EduControl";
+function inicializarVista(vista){
 
-    if (ruta.includes("/minfo.html")) {
-        document.title = tituloBase + " | Mi Información";
-    } else if (ruta.includes("/subirnotas.html")) {
-        document.title = tituloBase + " | Subir Notas";
-    } else if (ruta.includes("/asistenciadoc.html")) {
-        document.title = tituloBase + " | Asistencias";
-    } else if (ruta.includes("/obserdoc.html")) {
-        document.title = tituloBase + " | Observaciones";
-    } else {
-        document.title = tituloBase;
+    if(vista.includes("minfo")){
+        initMinfo()
+    }
+    if(vista.includes("subirnotas")){
+        initSubirNotas()
+    }
+    if(vista.includes("asistenciadoc")){
+        initAsistenciasDoc()
+    }
+    if(vista.includes("obserdoc")){
+        initObservacionesDoc()
+    }
+
+}
+
+function cambiarTitulo(ruta){
+
+    const tituloBase = "EduControl"
+
+    const titulos = {
+        minfo:"Mi Información",
+        subirnotas:"Subir Notas",
+        asistenciadoc:"Asistencias",
+        obserdoc:"Observaciones",
+    }
+
+    for(let key in titulos){
+        if(ruta.includes(key)){
+            document.title = `${tituloBase} | ${titulos[key]}`;
+            return;
+        }
     }
 }
+
+document.addEventListener("click",function(e){
+    if(e.target.classList.contains("nav-link-spa")){
+        e.preventDefault()
+        const vista = e.target.dataset.vista
+        cargarVista(vista)
+    }
+})
+
+document.addEventListener("DOMContentLoaded",function(){
+    cargarVista("/minfo.html") 
+})

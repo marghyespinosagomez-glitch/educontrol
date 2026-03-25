@@ -16,13 +16,14 @@ function aggGrado(){
         }))
     }; 
     console.log('Objeto de Grados: ', objGrado)
+    return objGrado;
 } 
 
 document.addEventListener("submit",function(e){
     if(e.target.id === "formAggGrado"){
         e.preventDefault();
         aggGrado();
-        limpiarFormularioCompleto(); 
+        limpiarFormularioCompletoGrados(); 
     }
 });
 
@@ -36,11 +37,11 @@ $(document).ready(function () {
     // Deshabilitar materias al iniciar 
     $(".materia").prop("disabled", true); 
     $("#grado, #letra").on("change", function () {
-        validarSeleccion(); 
+        validarSeleccionGrados(); 
     }); 
 }); 
 
-function validarSeleccion() { 
+function validarSeleccionGrados() { 
     let grado = $("#grado").val(); 
     let letra = $("#letra").val(); 
     if (grado && letra ) { 
@@ -71,10 +72,10 @@ $(document).off("click", "#btnAgregar").on("click", "#btnAgregar", function () {
         dias: dias, 
         bloques: bloques 
     }); 
-    mostrarMaterias(); 
-    limpiarCampos(); 
+    mostrarMateriasGrados(); 
+    limpiarCamposGrados(); 
 }); 
-function mostrarMaterias() { 
+function mostrarMateriasGrados() { 
     const contenedor = document.getElementById("materiasAgregadas"); 
     contenedor.innerHTML = ""; materiasSeleccionadas.forEach(materia => { 
         const div = document.createElement("div"); 
@@ -82,22 +83,23 @@ function mostrarMaterias() {
         div.textContent = materia.nombre; contenedor.appendChild(div);
     });
 } 
-function limpiarCampos() {
+function limpiarCamposGrados() {
     document.getElementById("matter").selectedIndex = 0; 
     document.querySelectorAll("input[name='day']").forEach(el => el.checked = false); 
     document.querySelectorAll("input[name='block']").forEach(el => el.checked = false); 
 } 
-function limpiarFormularioCompleto() { 
+function limpiarFormularioCompletoGrados() { 
     // Resetear formulario completo 
     document.getElementById("formAggGrado").reset(); 
     // Vaciar array de materias 
     materiasSeleccionadas.length = 0; 
     // Limpiar visualización de materias 
-    mostrarMaterias(); 
+    mostrarMateriasGrados(); 
     // Deshabilitar días y bloques nuevamente 
     $(".materia").prop("disabled", true); 
     $(".materia").prop("checked", false); 
 }
 
-// function initEstudiantes(){
-// }
+function initGrados(){
+}
+ 
